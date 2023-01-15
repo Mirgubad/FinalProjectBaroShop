@@ -1,0 +1,511 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "About Us";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/assets/Styles/SCSS/style.css" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+          crossorigin="anonymous" />
+    <script src="~/assets/Scripts/about.js" defer></script>
+    <script src="~/assets/Scripts/navbar.js" defer></script>
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+
+    <div id="about-head"></div>
+    <nav class="about-nav">
+        <div class="about-nav-inner">
+            <div>
+                <a asp-action="index" asp-controller="home">
+                    <img src="/assets/logo.png" alt="" />
+                </a>
+            </div>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <a href="#business">Who We Are</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#whatwedo">What We Do</a>
+                </div>
+                <div class="menu-item">
+                    <a href="#contact-info">Contact Us</a>
+                </div>
+            </div>
+            <button class="lines-button lines"><span></span></button>
+            <div class="burger-menu-items">
+                <div class="burger-inner">
+                    <a href="#business">Who We Are</a>
+                    <a href="#whatwedo">What We Do</a>
+                    <a href="#contact-info">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="wrapper">
+        <img class="about-banner-img" src="/assets/about-banner.jpg" alt="" />
+        <div class="about-container">
+           <section id="business">
+                <div class="business-header">
+                    <h2 class="title">Who We Are</h2>
+                </div>
+                <div class="business-items">
+                    <ul>
+                        <li>
+                            <h4 class="subtitle">Business Info</h4>
+                        </li>
+                        <li>
+                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-1.svg"
+                                 alt="" />
+                            <span>
+                                Since 2005, our mission is to have a positive impact by
+                                offering a seamless e-commerce experience to customers and
+                                sellers.
+                            </span>
+                        </li>
+
+                        <li>
+                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-2.svg"
+                                 alt="" />
+                            <span>
+                                The trust of over 30 million customers and 240,000 sellers
+                                propelled us to become the first decacorn in Azerbaijan and
+                                one of the top e-commerce platforms in the world.
+                            </span>
+                        </li>
+
+                        <li>
+                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-3.svg"
+                                 alt="" />
+                            <span>
+                                Giving back to the community is in our DNA. We bring this
+                                into action by supporting the digitalization of our sellers,
+                                empowering local manufacturers and advocating women’s
+                                participation in the digital economy and production.
+                            </span>
+                        </li>
+
+                        <li>
+                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-4.svg"
+                                 alt="" />
+                            <span>
+                                We maintain the leading R&D center in our ecosystem, Shopping
+                                Tech. With Shopping Express, we operate one of the
+                                fastest-growing logistics networks. Shopping Go is our instant
+                                food & grocery delivery service that takes us beyond fashion
+                                in Azerbaijan. Shopping is one of the largest pre-owned goods
+                                platforms, allowing us to contribute to a circular economy and
+                                sustainability.We’re in this for the long run and we’d love
+                                for you to be part of this journey.
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+          
+            <section id="facts-figures">
+                <div class="facts-container">
+                    <div class="fact-header">
+                        <h4 class="subtitle">Facts&Figures</h4>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-1.svg" alt="" />
+                        <p>Operating out of <b>Azerbaijan & Germany</b></p>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-2.svg" alt="" />
+                        <p>Over <b>30 million</b> customers</p>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-3.svg" alt="" />
+                        <p><b>240,000</b> sellers on the platform</p>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-4.svg" alt="" />
+                        <p>Over <b>170 million items</b> on the platform</p>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-5.svg" alt="" />
+                        <p>Delivers to <b>27 countries in Europe</b></p>
+                    </div>
+                    <div class="fact">
+                        <img src="/assets/facts-figures-6.svg" alt="" />
+                        <p>
+                            Offices in
+                            <b>Amsterdam, Berlin, Ankara, Istanbul, İzmir and Luxembourg</b>
+                        </p>
+                    </div>
+                </div>
+            </section>
+           
+            <section id="whatwedo">
+                <h2 class="whatwedo-header">What we do</h2>
+                <div class="whatwedo-container">
+                    <div class="whatwedo-inner">
+                        <h4 class="subtitle">For Customers</h4>
+                        <div class="whatwedo-title">
+                            <h2>
+                                ONLINE SHOPPING COLLECTION
+                                <span class="bg-black">Affordable trends to suit your style</span>
+                            </h2>
+                        </div>
+                        <div class="whatdowedo-description">
+                            <img src="/assets/AboutUS-BoxImage.webp" alt="" />
+                            <div>
+                                <p class="description-txt">
+                                    Our goal is to make fashion accessible for everyone, where
+                                    trends meet affordability. With our wide selection of
+                                    clothing, footwear and accessories, Shopping Collection
+                                    translates the latest runway trends into wearable outfits
+                                    for every style, occasion and budget. Our lines range from a
+                                    glamorous party selection (Shopping Party) and a casual
+                                    jeans collection (Shopping Denim) to modest fashion looks
+                                    (Shopping Modest) and a plus size collection (Shopping
+                                    Curve). Shopping Collection lets you embrace your unique
+                                    style from casual & relaxed to elegant & stylish with
+                                    on-trend fashion pieces for women, men and kids.
+                                </p>
+                                <br />
+                                <p class="description-txt">
+                                    Follow @@test for your daily dose of fashion inspo and trend
+                                    updates
+                                </p>
+                            </div>
+                        </div>
+                        <div class="whatdowedo-bottom">
+                            <h4>Multi-Brand Fashion Online Store</h4>
+                            <h5>Latest trends from popular brands</h5>
+                            <p>
+                                Beyond trending fashion items from our brand Shopping
+                                Collection and its versatile sub-brands, our Multi-Brand
+                                Fashion Online Store in Germany and Europe offers the latest
+                                collections of well-known retail brands such as NA-KD,
+                                Converse and Jack & Jones for women, men and kids. Shop your
+                                favorite brands, discover cool newcomer labels, find the
+                                latest trends interpreted by our own designers and a
+                                constantly growing number of global fashion brands.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+            <section class="about-services">
+                <h2 class="about-services-header">
+                    Our range of services in Azerbaijan
+                </h2>
+                <div class="about-services-container">
+                    <div class="about-services-inner">
+                        <div class="about-service-item">
+                            <div class="about-service-img">
+                                <img src="/assets/tymarketplace.svg" alt="" />
+                            </div>
+                            <div class="about-service-right">
+                                <h4>Shopping Marketplace <span>We have it all</span></h4>
+                                <p>
+                                    We offer a broad selection of categories from fashion and
+                                    beauty to homeware and electronics on our platform. Shoppers
+                                    can enjoy the convenience of a “one-stop shop” with seamless
+                                    e-commerce experience. We constantly strive to bring you
+                                    value while ensuring an easy, smooth and enjoyable shopping
+                                    journey.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-service-item">
+                            <div class="about-service-img">
+                                <img src="/assets/tyexpress.svg" alt="" />
+                            </div>
+                            <div class="about-service-right">
+                                <h4>Shopping Express <span>Reliable Logistics</span></h4>
+                                <p>
+                                    Shopping Express is our last-mile delivery solution,
+                                    offering a high-quality delivery experience by combining the
+                                    power of technology with expert teams.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-service-item">
+                            <div class="about-service-img">
+                                <img src="/assets/tygo.svg" alt="" />
+                            </div>
+                            <div class="about-service-right">
+                                <h4>Shopping Express <span>Reliable Logistics</span></h4>
+                                <p>
+                                    Easy, fast and reliable – our instant grocery and food
+                                    delivery service, Shopping Go, brings your daily needs to
+                                    your doorstep within minutes. We are constantly expanding
+                                    our network of riders, restaurants, shops and partners on
+                                    our fast-growing delivery platform.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact-info">
+                <div class="contact-inner">
+                    <div class="contact-left">
+                        <section class="mb-4">
+                            <h2 class="h1-responsive font-weight-bold col-7 mx-auto my-4">
+                                Contact us
+                            </h2>
+                            <p class="text-center w-responsive mb-5 col-8">
+                                Do you have any questions? Please do not hesitate to contact
+                                us directly. Our team will come back to you within a matter of
+                                hours to help you.
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-7 mb-md-0 mb-5">
+                                    <form id="contact-form"
+                                          name="contact-form"
+                                          action="mail.php"
+                                          method="POST">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="md-form mb-0">
+                                                    <label for="name" class="">Your name</label>
+                                                    <input type="text"
+                                                           id="name"
+                                                           name="name"
+                                                           class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="md-form mb-0">
+                                                    <label for="email" class="">Your email</label>
+                                                    <input type="text"
+                                                           id="email"
+                                                           name="email"
+                                                           class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="md-form mb-0">
+                                                    <label for="subject" class="">Subject</label>
+                                                    <input type="text"
+                                                           id="subject"
+                                                           name="subject"
+                                                           class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="md-form">
+                                                    <label for="message">Your message</label>
+                                                    <textarea type="text"
+                                                              id="message"
+                                                              name="message"
+                                                              rows="2"
+                                                              class="form-control md-textarea"></textarea>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <div class="text-center text-md-left">
+                                        <a class="btn bg-orangered text-light"
+                                           onclick="document.getElementById('contact-form').submit();">Send</a>
+                                    </div>
+                                    <div class="status"></div>
+                                </div>
+
+                                <div class="col-md-3 text-center">
+                                    <ul class="list-unstyled mb-0">
+                                        <li>
+                                            <i class="fas fa-map-marker-alt fa-2x"></i>
+                                            <p>Baku, Babek Ave 12, Azerbaijan</p>
+                                        </li>
+
+                                        <li>
+                                            <i class="fas fa-phone mt-4 fa-2x"></i>
+                                            <p>+994559911121</p>
+                                        </li>
+
+                                        <li>
+                                            <i class="fas fa-envelope mt-4 fa-2x"></i>
+                                            <p>mirqubad@gmail.com</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <div class="social-media">
+                            <span>Contact By:</span>
+                            <a title="Contact with Facebook" href="">
+                                <i class="fa-brands fa-facebook facebook"></i>
+                            </a>
+                            <a title="Contact with Linkedin" href="">
+                                <i class="fa-brands fa-linkedin linkedin"></i>
+                            </a>
+                            <a title="Contact with Instagram" href="">
+                                <i class="fa-brands fa-instagram instagram"
+                                   aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-right">
+                        <div class="location">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12155.435400934497!2d49.87030357625734!3d40.38982084120176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1673092739610!5m2!1sen!2s"
+                                    width="320"
+                                    height="320"
+                                    style="border: 0"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+
+    <!-- Footer Start-->
+   <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-items">
+                <div class="footer-item">
+                    <h4 class="footer-title" data-id="1">Payment Methods</h4>
+                    <div class="collapsed-items" id="1">
+                        <div class="collapsed-inner">
+                            <div>
+                                <a id="visa" href="/Pages/about.html">
+                                    <img src="/assets/visa.svg" alt="" />
+                                </a>
+                                <a id="mastercard" href="">
+                                    <img src="/assets/mastercard.svg" alt="" />
+                                </a>
+                            </div>
+                            <div>
+                                <a id="maximum-card" href="">
+                                    <img src="/assets/maximum-new.svg" alt="" />
+                                </a>
+                                <a id="world-bank" href="">
+                                    <img src="/assets/world-new.svg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer-item">
+                    <h4 class="footer-title" data-id="2">Mobile Applications</h4>
+                    <div class="collapsed-items" id="2">
+                        <div class="collapsed-inner">
+                            <a href="https://www.apple.com/app-store/" tabindex="0">
+                                <img class="bn46"
+                                     src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                                     alt="bn45" />
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.google.android.play.games&hl=en&gl=US&pli=1"
+                               tabindex="0">
+                                <img class="bn45"
+                                     src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/2560px-Google_Play_Store_badge_EN.svg.png"
+                                     alt="bn45" />
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer-item">
+                    <h4 class="footer-title" data-id="3">About Us</h4>
+                    <div class="collapsed-items" id="3">
+                        <div class="collapsed-inner">
+                            <a asp-action="index" asp-controller="about" asp-fragment="business">Who we are</a>
+                            <a asp-action="index" asp-controller="about" asp-fragment="whatwedo">What We Do</a>
+                            <a asp-action="index" asp-controller="about" asp-fragment="contact-info">Contact Us</a>
+                            <a asp-action="index" asp-controller="faq">FAQ</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <h4 class="footer-title" data-id="4">Social Media</h4>
+                    <div class="collapsed-items" id="4">
+                        <div class="collapsed-inner">
+                            <a href="https://www.facebook.com/" id="facebook">
+                                <i class="fa-brands fa-square-facebook"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" id="instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mirgubad-akbarov-191b32242/"
+                               id="linkedin">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="footer-item">
+                    <h4 class="footer-title" data-id="5">Contact Info</h4>
+                    <div class="collapsed-items" id="5">
+                        <div class="collapsed-inner">
+                            <a href="">+994(55)222-21-11<i class="fa-solid fa-mobile"></i></a>
+                            <a href="">+994(12)122-21-11 <i class="fa-solid fa-phone"></i></a>
+                            <a href="">
+                                example@gmail.com <i class="fa-solid fa-envelope"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="footer-rights">This site created By Mirgubad Akbarov</p>
+    </footer>
+    <!--Footer End-->
+    <!-- Scroll To Top-->
+    <a href="#about-head" id="to-top-btn">
+        <svg width="20px"
+             xmlns="http://www.w3.org/2000/svg"
+             class="h-6 w-6"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke="currentColor"
+             stroke-width="2">
+            <path stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+        </svg>
+    </a>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"
+            integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+           
+</body>
+</html>
+<!-- Scroll To Top-->

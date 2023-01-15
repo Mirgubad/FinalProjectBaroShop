@@ -1,0 +1,707 @@
+﻿@{
+    ViewBag.Title = "Baro Shop";
+}
+@using Web.ViewModels.Home;
+@model HomeIndexVM;
+
+<div class="promotion-carousel">
+    <div class="promotions">
+        <div>
+            @{
+                foreach (var slider in Model.HomeMainSliders)
+                {
+                    <div class="promotion" id=section-@slider.Order
+                     style="background-image: url('/assets/images/@slider.PhotoName')">
+                        <div class="shade"></div>
+                        <div class="promo-detail cycle-overlay">
+                            <div class="promo-text">
+                                <span class="dash"></span>
+                                <a href="#" class="copy">
+                                    <div class="headline">@slider.Title</div>
+                                    <p class="body long">
+                                        @slider.Subtitle
+                                    </p>
+                                </a>
+                                <div class="buttons">
+                                    <button class="learn-more">
+                                        <span class="circle" aria-hidden="true">
+                                            <span class="icon arrow"></span>
+                                        </span>
+                                        <a href="@slider.ButtonLink"><span class="button-text">See More</span></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            @* <div class="promotion"
+            id="section2"
+            style="background-image: url(/assets/homeslider2.jpg)">
+            <div class="shade"></div>
+            <div class="promo-detail cycle-overlay">
+            <div class="promo-text">
+            <span class="dash"></span>
+            <a href="#" class="copy">
+            <div class="headline">Special Prices</div>
+            <p class="body long">
+            Best Products Come and See
+            </p>
+            </a>
+            <div class="buttons">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">See More</span>
+            </button>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="promotion"
+            id="section3"
+            style="
+            background-image: url(/assets/pexels-владимир-васильев-14622376.jpg);
+            ">
+            <div class="shade"></div>
+            <div class="promo-detail cycle-overlay">
+            <div class="promo-text">
+            <span class="dash"></span>
+            <a href="#" class="copy">
+            <div class="headline">Best Fashion</div>
+            <p class="body long">
+            Season Finale: Find your style with us
+            </p>
+            </a>
+            <div class="buttons">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">See More</span>
+            </button>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="promotion"
+            id="section4"
+            style="
+            background-image: url(/assets/pexels-andrea-piacquadio-837140.jpg);
+            ">
+            <div class="shade"></div>
+            <div class="promo-detail cycle-overlay">
+            <div class="promo-text">
+            <span class="dash"></span>
+            <a href="#" class="copy">
+            <div class="headline medium">New Models</div>
+            <p class="body long">
+            Find your style with us
+            </p>
+            </a>
+            <div class="buttons">
+            <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">See More</span>
+            </button>
+            </div>
+            </div>
+            </div>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="navigation">
+    <ul>
+        @{
+            foreach (var slide in Model.HomeMainSliders)
+            {
+                <li><a href="#section-@slide.Order" data-number="@slide.Order"></a></li>
+            }
+        }
+    </ul>
+</div>
+
+<section class="brands">
+    <div class="brands-slider">
+        <div id="left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+        <div class="sliders_block">
+            <ul>
+                @{
+                    foreach (var brand in Model.Brands)
+                    {
+                        <li>
+                            <div class="brand-item">
+                                <img class="brand__img"
+                                 src="/assets/images/@brand.PhotoName" alt="" />
+                                <p class="brand-name">@brand.Title</p>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </div>
+        <div id="right">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+    </div>
+</section>
+
+<section class="special">
+
+    <div class="carousel">
+        <div class="carousel__nav">
+            <span id="moveLeft" class="carousel__arrow">
+                <svg class="carousel__icon"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24">
+                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
+                </svg>
+            </span>
+            <span id="moveRight" class="carousel__arrow">
+                <svg class="carousel__icon"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24">
+                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+                </svg>
+            </span>
+        </div>
+        @{
+            foreach (var specialSlider in Model.SpecialSliders)
+            {
+                <div class="carousel-item carousel-item--@specialSlider.Order">
+                    <div class="carousel-item__image" style="background:url(/assets/images/@specialSlider.PhotoName) !important;background-size:cover !important"></div>
+                    <div class="carousel-item__info">
+                        <div class="carousel-item__container">
+                            <h1 class="carousel-item__title">@specialSlider.Title</h1>
+                            <p class="carousel-item__description">
+                                @Html.Raw(specialSlider.Description)
+                            </p>
+                            <a href="@specialSlider.ButtonLink" class="carousel-item__btn">See More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+
+</section>
+
+<section class="best-selling">
+    <div id="main-container">
+        <h3>Best Selling</h3>
+        <div id="container">
+            <div class="best-selling-items">
+                @{
+                    foreach (var product in Model.BestSellingProducts)
+                    {
+                        <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
+                            <div class="best-selling-item">
+                                <div class="best-sell-img">
+                                    <img src="/assets/images/@product.MainPhoto" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p title="@product.Title">
+                                        <strong>@product.Brand.Title</strong>
+                                        @product.Title
+                                    </p>
+                                    <span class="price">@product.Price.99$</span>
+                                </div>
+                                <i class="fa fa-heart wish-list product-heart"
+                               aria-hidden="true"></i>
+                            </div>
+                        </a>
+
+                    }
+                }
+
+                @* <div class="best-selling-item">
+                <div class="best-sell-img">
+                <img src="/assets/product1.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Waikiki Party dress">Waikiki Party dress</p>
+                <span class="price">20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="best-selling-item">
+                <div class="best-sell-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p>Waikiki Party dress</p>
+                <span class="price">20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="best-selling-item">
+                <div class="best-sell-img">
+                <img src="/assets/product4.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p>Waikiki Party dress</p>
+                <span class="price">20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="best-selling-item">
+                <div class="best-sell-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p>Waikiki Party dress</p>
+                <span class="price">20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>*@
+
+
+                <div class="load-more">
+                    <button id="more-btn">
+                        <div id="text">
+                            <span>Load</span>
+                            <span>more</span>
+                        </div>
+                        <div class="clone">
+                            <span>Load</span>
+                            <span>more</span>
+                        </div>
+                        <svg width="20px"
+                             xmlns="http://www.w3.org/2000/svg"
+                             class="h-6 w-6"
+                             fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor"
+                             stroke-width="2">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="special-day"
+         style="background-image: url(/assets/blackFriday.jpg)">
+    <div class="special-left">
+        <time class="countdown"
+              date-time="2023-02-01 00:00:00"
+              style="--accent: green"></time>
+    </div>
+    <div class="special-right">
+        <h2>Black Friday</h2>
+        <h4>Everything on Sale Hurry Up</h4>
+    </div>
+</section>
+
+<section class="in-sale">
+    <div id="main-container">
+        <h3>Sale</h3>
+        <div id="container">
+            <div class="in-sale-items">
+                @{
+                    foreach (var inSaleProduct in Model.InSaleProducts)
+                    {
+                        <a asp-action="details" asp-controller="product" asp-route-id="@inSaleProduct.Id">
+                            <div class="in-sale-item">
+                                <div class="in-sale-img">
+                                    <img src="/assets/images/@inSaleProduct.MainPhoto" alt="" />
+                                </div>
+                                <div class="item-info">
+                                    <p title="@inSaleProduct.Title">
+                                        <strong>@inSaleProduct.Brand.Title</strong>
+                                        @inSaleProduct.Title
+                                    </p>
+                                    <span>@inSaleProduct.Price.99$</span>
+                                </div>
+                                <i class="fa fa-heart wish-list product-heart"
+                               aria-hidden="true"></i>
+                            </div>
+                        </a>
+                    }
+                }
+                @* <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>
+
+                <div class="in-sale-item">
+                <div class="in-sale-img">
+                <img src="/assets/product5.webp" alt="" />
+                </div>
+                <div class="item-info">
+                <p title="Blood pressure tester">Blood pressure tester</p>
+                <span>20.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+                aria-hidden="true"></i>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="swiper-container loading">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"
+             style="background-image: url(/assets/homeslider2.jpg)">
+            <img src="/assets/homeslider1.jpg" class="entity-img" />
+            <div class="content">
+                <p class="title"
+                   data-swiper-parallax="-30%"
+                   data-swiper-parallax-scale=".7">
+                    Shaun Matthews
+                </p>
+                <span class="caption" data-swiper-parallax="-20%">
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </span>
+            </div>
+        </div>
+        <div class="swiper-slide"
+             style="
+            background-image: url(/assets/pexels-владимир-васильев-14622376.jpg);
+          ">
+            <img src="/assets/pexels-andrea-piacquadio-837140.jpg"
+                 class="entity-img" />
+            <div class="content">
+                <p class="title"
+                   data-swiper-parallax="-30%"
+                   data-swiper-parallax-scale=".7">
+                    Alexis Berry
+                </p>
+                <span class="caption" data-swiper-parallax="-20%">
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </span>
+            </div>
+        </div>
+        <div class="swiper-slide"
+             style="
+            background-image: url(/assets/pexels-brett-sayles-12790536.jpg);
+          ">
+            <img src="/assets/pexels-moose-photos-1036627.jpg"
+                 class="entity-img" />
+            <div class="content">
+                <p class="title"
+                   data-swiper-parallax="-30%"
+                   data-swiper-parallax-scale=".7">
+                    Billie Pierce
+                </p>
+                <span class="caption" data-swiper-parallax="-20%">
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </span>
+            </div>
+        </div>
+        <div class="swiper-slide"
+             style="
+            background-image: url(/assets/pexels-andrea-piacquadio-837140.jpg);
+          ">
+            <img src="/assets/pexels-andrea-piacquadio-837140.jpg"
+                 class="entity-img" />
+            <div class="content">
+                <p class="title"
+                   data-swiper-parallax="-30%"
+                   data-swiper-parallax-scale=".7">
+                    Trevor Copeland
+                </p>
+                <span class="caption" data-swiper-parallax="-20%">
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </span>
+            </div>
+        </div>
+        <div class="swiper-slide"
+             style="
+            background-image: url(/assets/pexels-shattha-pilabut-135620.jpg);
+          ">
+            <img src="/assets/pexels-shattha-pilabut-135620.jpg"
+                 class="entity-img" />
+            <div class="content">
+                <p class="title"
+                   data-swiper-parallax="-30%"
+                   data-swiper-parallax-scale=".7">
+                    Bernadette Newman
+                </p>
+                <span class="caption" data-swiper-parallax="-20%">
+                    Lorem Ipsum has been the industry's standard dummy text ever
+                    since the 1500s, when an unknown printer took a galley of type and
+                    scrambled it to make a type specimen book.
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+</section>
+
+<section class="pb-5 pt-5" id="services">
+    <div class="vision-container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
+                <a href="https://bit.ly/2LHKl61" class="services-small-item">
+                    <div class="icon">
+                        <i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                    <h5 class="services-title">Free Delivery</h5>
+                    <p>Free Shipping on most order & Fast Delivery</p>
+                </a>
+                <div class="item-bg"></div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
+                <a href="https://bit.ly/2LHKl61" class="services-small-item">
+                    <div class="icon">
+                        <i class="fa fa-refresh" aria-hidden="true"></i>
+                    </div>
+                    <h5 class="services-title">Return Policy</h5>
+                    <p>Lorem Ipsum is simply dummy text of the</p>
+                </a>
+                <div class="item-bg"></div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
+                <a href="https://bit.ly/2LHKl61" class="services-small-item">
+                    <div class="icon">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <h5 class="services-title">24/7 Support</h5>
+                    <p>Lorem Ipsum is simply dummy text of the</p>
+                </a>
+                <div class="item-bg"></div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
+                <a href="https://bit.ly/2LHKl61" class="services-small-item">
+                    <div class="icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h5 class="services-title">Secure Payment</h5>
+                    <p>Lorem Ipsum is simply dummy text of the</p>
+                </a>
+                <div class="item-bg"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--testimonial area-->
+<section class="testimonial-area">
+    <div class="container" style="background: transparent">
+        <div class="heading">
+            <h2>OUR CLIENTS</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        </div>
+        <div class="testimonials wow fadeInUp">
+            <div class="testimonial">
+                <div class="author-img">
+                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/5.jpg"
+                         alt=""
+                         class="img-fluid rounded" />
+                </div>
+                <div class="author-quote">
+                    <h4>Maecenas varius finibus orci vel</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+                        vel dignissim. Nam posuere, magna pellentesque accumsan
+                        tincidunt, libero lorem convallis lectus
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="author-img">
+                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/4.jpg"
+                         alt=""
+                         class="img-fluid rounded" />
+                </div>
+                <div class="author-quote">
+                    <h4>Maecenas varius finibus orci vel</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+                        vel dignissim. Nam posuere, magna pellentesque accumsan
+                        tincidunt, libero lorem convallis lectus
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="author-img">
+                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/3.jpg"
+                         alt=""
+                         class="img-fluid rounded" />
+                </div>
+                <div class="author-quote">
+                    <h4>Maecenas varius finibus orci vel</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+                        vel dignissim. Nam posuere, magna pellentesque accumsan
+                        tincidunt, libero lorem convallis lectus
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="author-img">
+                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/2.jpg"
+                         alt=""
+                         class="img-fluid rounded" />
+                </div>
+                <div class="author-quote">
+                    <h4>Maecenas varius finibus orci vel</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+                        vel dignissim. Nam posuere, magna pellentesque accumsan
+                        tincidunt, libero lorem convallis lectus
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="author-img">
+                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/1.jpg"
+                         alt=""
+                         class="img-fluid rounded" />
+                </div>
+                <div class="author-quote">
+                    <h4>Maecenas varius finibus orci vel</h4>
+                    <blockquote>
+                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+                        vel dignissim. Nam posuere, magna pellentesque accumsan
+                        tincidunt, libero lorem convallis lectus
+                        <i class="fa fa-quote-right"></i>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--testimonial end-->
+@section Scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"
+        integrity="sha512-eP8DK17a+MOcKHXC5Yrqzd8WI5WKh6F1TIk5QZ/8Lbv+8ssblcz7oGC8ZmQ/ZSAPa7ZmsCU4e/hcovqR8jfJqA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="~/assets/Scripts/script.js"></script>
+      }     
