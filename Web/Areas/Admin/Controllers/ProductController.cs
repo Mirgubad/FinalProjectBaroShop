@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Web.Areas.Admin.Services.Abstract;
@@ -121,6 +122,45 @@ namespace Web.Areas.Admin.Controllers
             if (isSucceded) return RedirectToAction(nameof(Index), "product");
             return View(model);
         }
+        #endregion
+
+        #region UpdateSize
+        [HttpPost]
+        public async Task<IActionResult> UpdateSize(int id)
+        {
+            return View();
+        }
+        #endregion
+
+        #region UpdatePhoto
+        [HttpGet]
+        public async Task<IActionResult> UpdatePhoto(int id)
+        {
+            var model = await _productService.GetPhotoUpdateModelAsync(id);
+            if (model == null) return NotFound();
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePhoto(int id, ProductPhotoUpdateVM model)
+        {
+            if (id != model.Id) return BadRequest();
+            var isSucceded = await _productService.PhotoUpdateAsync(model);
+            if (isSucceded) return RedirectToAction(nameof(Update), "product", new { id = model.ProductId });
+            return View(model);
+        }
+        #endregion
+
+
+        #region DeletePhoto
+        [HttpPost]
+        public async Task<IActionResult> DeletePhoto(int id, int productId)
+        {
+            await _productService.DeletePhotoAsync(id);
+            return RedirectToAction(nameof(Update), "product", new { id = productId });
+        }
+
+
         #endregion
     }
 }

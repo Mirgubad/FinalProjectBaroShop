@@ -1,166 +1,4 @@
-﻿@*<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/Admin/styles/style.css" />
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous"
-          referrerpolicy="no-referrer" />
-    <title>@ViewBag.Title</title>
-</head>
-
-<body>
-
-    <div class="app-container">
-        <div class="app-left">
-            <button class="close-menu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-            </button>
-            <div class="app-logo">
-
-                <img src="~/assets/logo.png" />
-            </div>
-            <ul class="nav-list">
-                <li class="nav-list-item">
-                    <a class="nav-list-link" title="@User.Identity.Name" asp-action="logout" asp-controller="account" asp-area="admin">
-                        <svg id="log_in_icon" class="header_icon" viewbox="10 0 135 135" xmlns="http://www.w3.org/2000/svg">
-                            <path id="path1" d="M 39.505192,111.30078 c -21.4583,-2.79124 -23.89267,-5.62556 -17.65467,-20.555208 5.05191,-12.09091 24.60982,-21.91257 31.64435,-15.89127 8.58597,7.34927 18.3949,7.0997 26.42544,-0.67236 5.29381,-5.12343 6.8403,-3.12538 3.00035,3.87642 -4.63016,8.44269 -4.63279,19.17593 -0.007,28.145378 3.18813,6.18166 -16.91934,8.54268 -43.40858,5.09704 z m 19.23103,-36.796438 c -3.92227,-2.42276 -6.08556,-4.92942 -7.91909,-9.17604 -0.82246,-1.90487 -2.41893,-4.8134 -3.54772,-6.4634 -3.38391,-4.94639 -4.35576,-9.99382 -2.64965,-13.76126 0.80667,-1.78131 1.63077,-6.22222 1.83132,-9.8687 1.40895,-25.6179098 37.81394,-23.37365 40.42447,2.49205 0.2852,2.82585 0.9959,6.1258 1.57933,7.33323 2.0526,4.24795 -1.59671,13.63061 -9.77578,25.13429 -4.23698,5.95921 -13.89402,8.04618 -19.94288,4.30983 z" />
-                            <path id="path2" d="M 100.596,117.28386 C 85.437922,111.45435 79.069222,92.988412 87.266572,78.635392 100.83776,54.873142 137.36852,64.439322 137.52514,91.796422 137.63626,111.20715 118.72801,124.25708 100.596,117.28386 Z m 19.74032,-8.09538 c 10.45724,-5.87729 13.21598,-22.797628 4.93837,-30.288768 -4.29393,-3.88595 -7.80157,0.40831 -4.13793,5.06588 4.88957,6.21607 2.72738,16.449868 -4.16671,19.721318 -12.86051,6.10272 -25.040138,-7.223638 -17.183378,-18.801218 4.823328,-7.10758 0.0206,-10.75821 -5.18116,-3.93831 -12.22103,16.0226 7.993958,38.209768 25.730808,28.241098 z m -7.13528,-20.757838 c 1.59283,-2.97623 1.30167,-16.32461 -0.40625,-18.62461 -3.03513,-4.08731 -5.02522,-0.73384 -5.34895,9.01342 -0.35021,10.54513 2.60982,15.48839 5.7552,9.61119 z" />
-                        </svg>
-                        Log Out
-                    </a>
-                </li>
-                <li class="nav-list-item active">
-                    <a class="nav-list-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns"><path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18" /></svg>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="nav-list-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-briefcase"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
-                        Jobs
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="nav-list-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><polyline points="13 2 13 9 20 9" /></svg>
-                        Applications
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="nav-list-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-                        Team
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="nav-list-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart"><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /><path d="M22 12A10 10 0 0 0 12 2v10z" /></svg>
-                        Reports
-                    </a>
-                </li>
-            </ul>
-        </div>
-        @RenderBody()
-    </div>
-    <script>
-        var chart = document.getElementById('chart').getContext('2d'),
-            gradient = chart.createLinearGradient(0, 0, 0, 450);
-
-        gradient.addColorStop(0, 'rgba(0, 199, 214, 0.32)');
-        gradient.addColorStop(0.3, 'rgba(0, 199, 214, 0.1)');
-        gradient.addColorStop(1, 'rgba(0, 199, 214, 0)');
-
-
-        var data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-            datasets: [{
-                label: 'Applications',
-                backgroundColor: gradient,
-                pointBackgroundColor: '#00c7d6',
-                borderWidth: 1,
-                borderColor: '#0e1a2f',
-                data: [60, 45, 80, 30, 35, 55, 25, 80, 40, 50, 80, 50]
-            }]
-        };
-
-        var options = {
-            responsive: true,
-            maintainAspectRatio: true,
-            animation: {
-                easing: 'easeInOutQuad',
-                duration: 520
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        fontColor: '#5e6a81'
-                    },
-                    gridLines: {
-                        color: 'rgba(200, 200, 200, 0.08)',
-                        lineWidth: 1
-                    }
-                }],
-                xAxes: [{
-                    ticks: {
-                        fontColor: '#5e6a81'
-                    }
-                }]
-            },
-            elements: {
-                line: {
-                    tension: 0.4
-                }
-            },
-            legend: {
-                display: false
-            },
-            point: {
-                backgroundColor: '#00c7d6'
-            },
-            tooltips: {
-                titleFontFamily: 'Poppins',
-                backgroundColor: 'rgba(0,0,0,0.4)',
-                titleFontColor: 'white',
-                caretSize: 5,
-                cornerRadius: 2,
-                xPadding: 10,
-                yPadding: 10
-            }
-        };
-
-        var chartInstance = new Chart(chart, {
-            type: 'line',
-            data: data,
-            options: options
-        });
-
-        document.querySelector('.open-right-area').addEventListener('click', function () {
-            document.querySelector('.app-right').classList.add('show');
-        });
-
-        document.querySelector('.close-right').addEventListener('click', function () {
-            document.querySelector('.app-right').classList.remove('show');
-        });
-
-        document.querySelector('.menu-button').addEventListener('click', function () {
-            document.querySelector('.app-left').classList.add('show');
-        });
-
-        document.querySelector('.close-menu').addEventListener('click', function () {
-            document.querySelector('.app-left').classList.remove('show');
-        });</script>
-</body>
-</html>
-*@
-
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 
 <head>
@@ -286,16 +124,16 @@
                                             <a class="nav-link" asp-action="index" asp-controller="specialslider" asp-area="admin">Special Slider</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/carousel.html">Carousel</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="homespecialday" asp-area="admin">Special Day</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/listgroup.html">List Group</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="homeswiper" asp-area="admin">Swiper</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/typography.html">Typography</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="ourservice" asp-area="admin">Our Services</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/accordions.html">Accordions</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="testimonial" asp-area="admin">Testimonials</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="pages/tabs.html">Tabs</a>
@@ -333,36 +171,31 @@
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>Forms</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-4" aria-controls="submenu-4"><i class="fab fa-fw fa-wpforms"></i>FAQ</a>
                                 <div id="submenu-4" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-elements.html">Form Elements</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="questioncategory" asp-area="admin">Question's Categories</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/form-validation.html">Parsely Validations</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="question" asp-area="admin">Questions</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/multiselect.html">Multiselect</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/datepicker.html">Date Picker</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="pages/bootstrap-select.html">Bootstrap Select</a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>Tables</a>
+                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-5" aria-controls="submenu-5"><i class="fas fa-fw fa-table"></i>About</a>
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/general-table.html">General Tables</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="businessinfo" asp-area="admin">Business Info</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/data-tables.html">Data Tables</a>
+                                            <a class="nav-link" asp-action="index" asp-controller="fact" asp-area="admin">Fact&Figures</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-action="index" asp-controller="whatwedo" asp-area="admin">What We Do</a>
                                         </li>
                                     </ul>
                                 </div>

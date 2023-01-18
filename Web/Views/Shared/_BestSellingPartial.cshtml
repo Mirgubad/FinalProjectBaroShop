@@ -1,0 +1,37 @@
+﻿@using Web.ViewModels.Product;
+@model ProductLoadMoreVM;
+
+@{
+    foreach (var product in Model.BestSellingProducts)
+    {
+        <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
+            <div class="best-selling-item">
+                <div class="best-sell-img">
+                    <img src="/assets/images/@product.MainPhoto" alt="" />
+                </div>
+                <div class="item-info">
+                    <p title="@product.Title">
+                        <strong>@product.Brand.Title</strong>
+                        @product.Title
+                    </p>
+                    <span class="price">@product.Price.99$</span>
+                </div>
+                <i class="fa fa-heart wish-list product-heart"
+               aria-hidden="true"></i>
+            </div>
+        </a>
+    }
+
+
+    if (Model.IsLast)
+    {
+        <script>
+            jQuery(document).ready((function ($) {
+                function myFunc() {
+                    $('#more-btn').remove();
+                }
+                myFunc();
+            }))
+        </script>
+    }
+}

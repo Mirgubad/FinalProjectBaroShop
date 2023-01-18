@@ -2,6 +2,8 @@
     Layout = null;
     ViewBag.Title = "About Us";
 }
+@using Web.ViewModels.About;
+@model AboutIndexVM;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,151 +61,81 @@
     <div class="wrapper">
         <img class="about-banner-img" src="/assets/about-banner.jpg" alt="" />
         <div class="about-container">
-           <section id="business">
-                <div class="business-header">
-                    <h2 class="title">Who We Are</h2>
-                </div>
-                <div class="business-items">
-                    <ul>
-                        <li>
-                            <h4 class="subtitle">Business Info</h4>
-                        </li>
-                        <li>
-                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-1.svg"
-                                 alt="" />
-                            <span>
-                                Since 2005, our mission is to have a positive impact by
-                                offering a seamless e-commerce experience to customers and
-                                sellers.
-                            </span>
-                        </li>
 
-                        <li>
-                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-2.svg"
-                                 alt="" />
-                            <span>
-                                The trust of over 30 million customers and 240,000 sellers
-                                propelled us to become the first decacorn in Azerbaijan and
-                                one of the top e-commerce platforms in the world.
-                            </span>
-                        </li>
-
-                        <li>
-                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-3.svg"
-                                 alt="" />
-                            <span>
-                                Giving back to the community is in our DNA. We bring this
-                                into action by supporting the digitalization of our sellers,
-                                empowering local manufacturers and advocating women’s
-                                participation in the digital economy and production.
-                            </span>
-                        </li>
-
-                        <li>
-                            <img src="https://cdn.dsmcdn.com/web/corporate/business-info-4.svg"
-                                 alt="" />
-                            <span>
-                                We maintain the leading R&D center in our ecosystem, Shopping
-                                Tech. With Shopping Express, we operate one of the
-                                fastest-growing logistics networks. Shopping Go is our instant
-                                food & grocery delivery service that takes us beyond fashion
-                                in Azerbaijan. Shopping is one of the largest pre-owned goods
-                                platforms, allowing us to contribute to a circular economy and
-                                sustainability.We’re in this for the long run and we’d love
-                                for you to be part of this journey.
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+            <section id="business">
+                @if (Model.BusinessInfos.Count > 0)
+                {
+                    <div class="business-header">
+                        <h2 class="title">Who We Are</h2>
+                    </div>
+                    <div class="business-items">
+                        <ul>
+                            <li style="width:100%">
+                                <h4 class="subtitle">Business Info</h4>
+                            </li>
+                            @{
+                                foreach (var businessInfo in Model.BusinessInfos)
+                                {
+                                    <li>
+                                        <img src="/assets/images/@businessInfo.PhotoName"
+                                     alt="" />
+                                        @Html.Raw(businessInfo.Description)
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
             </section>
-          
+
             <section id="facts-figures">
-                <div class="facts-container">
-                    <div class="fact-header">
-                        <h4 class="subtitle">Facts&Figures</h4>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-1.svg" alt="" />
-                        <p>Operating out of <b>Azerbaijan & Germany</b></p>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-2.svg" alt="" />
-                        <p>Over <b>30 million</b> customers</p>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-3.svg" alt="" />
-                        <p><b>240,000</b> sellers on the platform</p>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-4.svg" alt="" />
-                        <p>Over <b>170 million items</b> on the platform</p>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-5.svg" alt="" />
-                        <p>Delivers to <b>27 countries in Europe</b></p>
-                    </div>
-                    <div class="fact">
-                        <img src="/assets/facts-figures-6.svg" alt="" />
-                        <p>
-                            Offices in
-                            <b>Amsterdam, Berlin, Ankara, Istanbul, İzmir and Luxembourg</b>
-                        </p>
-                    </div>
-                </div>
-            </section>
-           
-            <section id="whatwedo">
-                <h2 class="whatwedo-header">What we do</h2>
-                <div class="whatwedo-container">
-                    <div class="whatwedo-inner">
-                        <h4 class="subtitle">For Customers</h4>
-                        <div class="whatwedo-title">
-                            <h2>
-                                ONLINE SHOPPING COLLECTION
-                                <span class="bg-black">Affordable trends to suit your style</span>
-                            </h2>
+                @{
+                    if (Model.Facts.Count > 0)
+                    {
+                        <div class="facts-container">
+                            <div class="fact-header">
+                                <h4 class="subtitle">Facts&Figures</h4>
+                            </div>
+                            @{
+                                foreach (var fact in Model.Facts)
+                                {
+                                    <div class="fact">
+                                        <img src="/assets/images/@fact.PhotoName" alt="" />
+                                        @Html.Raw(fact.Description)
+                                    </div>
+                                }
+                            }
                         </div>
-                        <div class="whatdowedo-description">
-                            <img src="/assets/AboutUS-BoxImage.webp" alt="" />
-                            <div>
-                                <p class="description-txt">
-                                    Our goal is to make fashion accessible for everyone, where
-                                    trends meet affordability. With our wide selection of
-                                    clothing, footwear and accessories, Shopping Collection
-                                    translates the latest runway trends into wearable outfits
-                                    for every style, occasion and budget. Our lines range from a
-                                    glamorous party selection (Shopping Party) and a casual
-                                    jeans collection (Shopping Denim) to modest fashion looks
-                                    (Shopping Modest) and a plus size collection (Shopping
-                                    Curve). Shopping Collection lets you embrace your unique
-                                    style from casual & relaxed to elegant & stylish with
-                                    on-trend fashion pieces for women, men and kids.
-                                </p>
-                                <br />
-                                <p class="description-txt">
-                                    Follow @@test for your daily dose of fashion inspo and trend
-                                    updates
-                                </p>
+                    }
+                }
+            </section>
+
+            <section id="whatwedo">
+                @{
+                    if (Model.WhatWedo != null)
+                    {
+                        <h2 class="whatwedo-header">What we do</h2>
+                        <div class="whatwedo-container">
+                            <div class="whatwedo-inner">
+                                <h4 class="subtitle">For Customers</h4>
+                                <div class="whatwedo-title">
+                                    <h2>
+                                        @Model.WhatWedo.Title
+                                    </h2>
+                                </div>
+                                <div class="whatdowedo-description">
+                                    <img src="/assets/images/@Model.WhatWedo.PhotoName" alt="" />
+                                    <div>
+                                        @Html.Raw(Model.WhatWedo.Description)
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="whatdowedo-bottom">
-                            <h4>Multi-Brand Fashion Online Store</h4>
-                            <h5>Latest trends from popular brands</h5>
-                            <p>
-                                Beyond trending fashion items from our brand Shopping
-                                Collection and its versatile sub-brands, our Multi-Brand
-                                Fashion Online Store in Germany and Europe offers the latest
-                                collections of well-known retail brands such as NA-KD,
-                                Converse and Jack & Jones for women, men and kids. Shop your
-                                favorite brands, discover cool newcomer labels, find the
-                                latest trends interpreted by our own designers and a
-                                constantly growing number of global fashion brands.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
+
             </section>
-           
+
             <section class="about-services">
                 <h2 class="about-services-header">
                     Our range of services in Azerbaijan
@@ -387,7 +319,7 @@
 
 
     <!-- Footer Start-->
-   <footer id="footer">
+    <footer id="footer">
         <div class="footer-container">
             <div class="footer-items">
                 <div class="footer-item">
@@ -500,12 +432,12 @@
                   d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
         </svg>
     </a>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"
             integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
-           
+
 </body>
 </html>
 <!-- Scroll To Top-->

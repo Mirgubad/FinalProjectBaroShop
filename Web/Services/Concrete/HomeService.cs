@@ -15,16 +15,28 @@ namespace Web.Services.Concrete
         private readonly IHomeMainSliderRepository _homeMainSliderRepository;
         private readonly ISpecialSliderRepository _specialSliderRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IHomeSpecialDayRepository _homeSpecialDayRepository;
+        private readonly IHomeSwiperRepository _homeSwiperRepository;
+        private readonly IOurServiceRepository _ourServiceRepository;
+        private readonly ITestimonialRepository _testimonialRepository;
 
         public HomeService(IBrandRepository brandRepository,
             IHomeMainSliderRepository homeMainSliderRepository,
             ISpecialSliderRepository specialSliderRepository,
-            IProductRepository productRepository)
+            IProductRepository productRepository,
+            IHomeSpecialDayRepository homeSpecialDayRepository,
+            IHomeSwiperRepository homeSwiperRepository,
+            IOurServiceRepository ourServiceRepository,
+            ITestimonialRepository testimonialRepository)
         {
             _brandRepository = brandRepository;
             _homeMainSliderRepository = homeMainSliderRepository;
             _specialSliderRepository = specialSliderRepository;
             _productRepository = productRepository;
+            _homeSpecialDayRepository = homeSpecialDayRepository;
+            _homeSwiperRepository = homeSwiperRepository;
+            _ourServiceRepository = ourServiceRepository;
+            _testimonialRepository = testimonialRepository;
         }
         public async Task<HomeIndexVM> GetAllAsync()
         {
@@ -35,6 +47,10 @@ namespace Web.Services.Concrete
                 SpecialSliders = await _specialSliderRepository.GetAllAsync(),
                 BestSellingProducts = await _productRepository.GetProductsBestSellingAsync(),
                 InSaleProducts = await _productRepository.GetProductsInSaleAsync(),
+                HomeSpecialDay = await _homeSpecialDayRepository.GetAsync(),
+                HomeSwipers = await _homeSwiperRepository.GetAllAsync(),
+                OurServices = await _ourServiceRepository.GetAllAsync(),
+                Testimonials = await _testimonialRepository.GetAllAsync(),
             };
             return model;
         }

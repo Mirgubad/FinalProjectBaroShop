@@ -8,5 +8,8 @@ namespace Web.Services.Abstract
         Task<ProductIndexVM> GetAllAsync(ProductIndexVM model);
 
         Task<ProductDetailsVM> GetDetailsAsync(int id);
+
+        Task<ProductLoadMoreVM> GetLoadMoreAsync(int skipRow);
+      
     }
 }

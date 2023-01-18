@@ -66,6 +66,25 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductColorRepository, ProductColorRepository>();
 builder.Services.AddScoped<ISizeRepository, SizeRepository>();
 builder.Services.AddScoped<IProductSizeRepository, ProductSizeRepository>();
+builder.Services.AddScoped<IHomeSpecialDayRepository, HomeSpecialDayRepository>();
+builder.Services.AddScoped<IHomeSwiperRepository, HomeSwiperRepository>();
+builder.Services.AddScoped<IOurServiceRepository, OurServiceRepository>();
+builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
+builder.Services.AddScoped<IQuestionCategoryRepository, QuestionCategoryRepository>();
+builder.Services.AddScoped<IBusinessInfoRepository, BusinessInfoRepository>();
+builder.Services.AddScoped<IFactRepository, FactRepository>();
+builder.Services.AddScoped<IWhatWeDoRepository, WhatWeDoRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+
+
+
+
+
+
+
+
+
 
 
 
@@ -76,6 +95,10 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IFaqService, FaqService>();
+builder.Services.AddScoped<IAboutService, AboutService>();
+
+
 
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services.AddScoped<AdminAbstractService.IAccountService, AdminConcreteService.AccountService>();
@@ -86,6 +109,26 @@ builder.Services.AddScoped<AdminAbstractService.ISpecialSliderService, AdminConc
 builder.Services.AddScoped<AdminAbstractService.IColorService, AdminConcreteService.ColorService>();
 builder.Services.AddScoped<AdminAbstractService.IProductService, AdminConcreteService.ProductService>();
 builder.Services.AddScoped<AdminAbstractService.ISizeService, AdminConcreteService.SizeService>();
+builder.Services.AddScoped<AdminAbstractService.IHomeSpecialDayService, AdminConcreteService.HomeSpecialDayService>();
+builder.Services.AddScoped<AdminAbstractService.IHomeSwiperService, AdminConcreteService.HomeSwiperService>();
+builder.Services.AddScoped<AdminAbstractService.IOurServiceService, AdminConcreteService.OurServiceService>();
+builder.Services.AddScoped<AdminAbstractService.ITestimonialService, AdminConcreteService.TestimonialService>();
+builder.Services.AddScoped<AdminAbstractService.IQuestionService, AdminConcreteService.QuestionService>();
+builder.Services.AddScoped<AdminAbstractService.IQuestionCategoryService, AdminConcreteService.QuestionCategoryService>();
+builder.Services.AddScoped<AdminAbstractService.IBusinessInfoService, AdminConcreteService.BusinessInfoService>();
+builder.Services.AddScoped<AdminAbstractService.IFactService, AdminConcreteService.FactService>();
+builder.Services.AddScoped<AdminAbstractService.IWhatWeDoService, AdminConcreteService.WhatWeDoService>();
+builder.Services.AddScoped<AdminAbstractService.IServiceService, AdminConcreteService.ServiceService>();
+
+
+
+
+
+
+
+
+
+
 
 
 

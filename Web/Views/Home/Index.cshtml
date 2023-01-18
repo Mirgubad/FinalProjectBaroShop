@@ -200,7 +200,7 @@
     <div id="main-container">
         <h3>Best Selling</h3>
         <div id="container">
-            <div class="best-selling-items">
+            <div id="best-selling-products" class="best-selling-items">
                 @{
                     foreach (var product in Model.BestSellingProducts)
                     {
@@ -220,58 +220,8 @@
                                aria-hidden="true"></i>
                             </div>
                         </a>
-
                     }
                 }
-
-                @* <div class="best-selling-item">
-                <div class="best-sell-img">
-                <img src="/assets/product1.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Waikiki Party dress">Waikiki Party dress</p>
-                <span class="price">20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="best-selling-item">
-                <div class="best-sell-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p>Waikiki Party dress</p>
-                <span class="price">20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="best-selling-item">
-                <div class="best-sell-img">
-                <img src="/assets/product4.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p>Waikiki Party dress</p>
-                <span class="price">20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="best-selling-item">
-                <div class="best-sell-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p>Waikiki Party dress</p>
-                <span class="price">20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>*@
-
 
                 <div class="load-more">
                     <button id="more-btn">
@@ -301,18 +251,24 @@
     </div>
 </section>
 
-<section class="special-day"
-         style="background-image: url(/assets/blackFriday.jpg)">
-    <div class="special-left">
-        <time class="countdown"
-              date-time="2023-02-01 00:00:00"
-              style="--accent: green"></time>
-    </div>
-    <div class="special-right">
-        <h2>Black Friday</h2>
-        <h4>Everything on Sale Hurry Up</h4>
-    </div>
-</section>
+@{
+    if (Model.HomeSpecialDay != null)
+    {
+        <section class="special-day"
+             style="background-image: url('/assets/images/@Model.HomeSpecialDay.PhotoName')">
+            <div class="special-left">
+                <time class="countdown"
+                  date-time="@Model.HomeSpecialDay.Year.@Model.HomeSpecialDay.Month.@Model.HomeSpecialDay.Day @Model.HomeSpecialDay.Hour:@Model.HomeSpecialDay.Minute:00"
+                  style="--accent: green"></time>
+            </div>
+            <div class="special-right">
+                <h2>Black Friday</h2>
+                <h4>Everything on Sale Hurry Up</h4>
+            </div>
+        </section>
+    }
+}
+
 
 <section class="in-sale">
     <div id="main-container">
@@ -454,98 +410,25 @@
 
 <section class="swiper-container loading">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"
-             style="background-image: url(/assets/homeslider2.jpg)">
-            <img src="/assets/homeslider1.jpg" class="entity-img" />
-            <div class="content">
-                <p class="title"
-                   data-swiper-parallax="-30%"
-                   data-swiper-parallax-scale=".7">
-                    Shaun Matthews
-                </p>
-                <span class="caption" data-swiper-parallax="-20%">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                </span>
-            </div>
-        </div>
-        <div class="swiper-slide"
-             style="
-            background-image: url(/assets/pexels-владимир-васильев-14622376.jpg);
-          ">
-            <img src="/assets/pexels-andrea-piacquadio-837140.jpg"
-                 class="entity-img" />
-            <div class="content">
-                <p class="title"
-                   data-swiper-parallax="-30%"
-                   data-swiper-parallax-scale=".7">
-                    Alexis Berry
-                </p>
-                <span class="caption" data-swiper-parallax="-20%">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                </span>
-            </div>
-        </div>
-        <div class="swiper-slide"
-             style="
-            background-image: url(/assets/pexels-brett-sayles-12790536.jpg);
-          ">
-            <img src="/assets/pexels-moose-photos-1036627.jpg"
-                 class="entity-img" />
-            <div class="content">
-                <p class="title"
-                   data-swiper-parallax="-30%"
-                   data-swiper-parallax-scale=".7">
-                    Billie Pierce
-                </p>
-                <span class="caption" data-swiper-parallax="-20%">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                </span>
-            </div>
-        </div>
-        <div class="swiper-slide"
-             style="
-            background-image: url(/assets/pexels-andrea-piacquadio-837140.jpg);
-          ">
-            <img src="/assets/pexels-andrea-piacquadio-837140.jpg"
-                 class="entity-img" />
-            <div class="content">
-                <p class="title"
-                   data-swiper-parallax="-30%"
-                   data-swiper-parallax-scale=".7">
-                    Trevor Copeland
-                </p>
-                <span class="caption" data-swiper-parallax="-20%">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                </span>
-            </div>
-        </div>
-        <div class="swiper-slide"
-             style="
-            background-image: url(/assets/pexels-shattha-pilabut-135620.jpg);
-          ">
-            <img src="/assets/pexels-shattha-pilabut-135620.jpg"
-                 class="entity-img" />
-            <div class="content">
-                <p class="title"
-                   data-swiper-parallax="-30%"
-                   data-swiper-parallax-scale=".7">
-                    Bernadette Newman
-                </p>
-                <span class="caption" data-swiper-parallax="-20%">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type and
-                    scrambled it to make a type specimen book.
-                </span>
-            </div>
-        </div>
+        @{
+            foreach (var swiper in Model.HomeSwipers)
+            {
+                <div class="swiper-slide"
+                 style="background-image: url('/assets/images/@swiper.PhotoName')">
+                    <img src="/assets/images/@swiper.PhotoName" class="entity-img" />
+                    <div class="content">
+                        <p class="title"
+                       data-swiper-parallax="-30%"
+                       data-swiper-parallax-scale=".7">
+                            @swiper.Title
+                        </p>
+                        <span class="caption" data-swiper-parallax="-20%">
+                            @swiper.Description
+                        </span>
+                    </div>
+                </div>
+            }
+        }
     </div>
 
     <!-- If we need pagination -->
@@ -558,46 +441,21 @@
 <section class="pb-5 pt-5" id="services">
     <div class="vision-container">
         <div class="row">
-            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
-                <a href="https://bit.ly/2LHKl61" class="services-small-item">
-                    <div class="icon">
-                        <i class="fa fa-truck" aria-hidden="true"></i>
+            @{
+                foreach (var service in Model.OurServices)
+                {
+                    <div class="col-lg-3 col-sm-6 col-8 mx-auto">
+                        <a class="services-small-item">
+                            <div class="icon">
+                                <i class="fa fa-@service.Icon" aria-hidden="true"></i>
+                            </div>
+                            <h5 class="services-title">@service.Title</h5>
+                            <p>@service.Description</p>
+                        </a>
+                        <div class="item-bg"></div>
                     </div>
-                    <h5 class="services-title">Free Delivery</h5>
-                    <p>Free Shipping on most order & Fast Delivery</p>
-                </a>
-                <div class="item-bg"></div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
-                <a href="https://bit.ly/2LHKl61" class="services-small-item">
-                    <div class="icon">
-                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                    </div>
-                    <h5 class="services-title">Return Policy</h5>
-                    <p>Lorem Ipsum is simply dummy text of the</p>
-                </a>
-                <div class="item-bg"></div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
-                <a href="https://bit.ly/2LHKl61" class="services-small-item">
-                    <div class="icon">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                    </div>
-                    <h5 class="services-title">24/7 Support</h5>
-                    <p>Lorem Ipsum is simply dummy text of the</p>
-                </a>
-                <div class="item-bg"></div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-8 mx-auto">
-                <a href="https://bit.ly/2LHKl61" class="services-small-item">
-                    <div class="icon">
-                        <i class="fa-solid fa-shield-halved"></i>
-                    </div>
-                    <h5 class="services-title">Secure Payment</h5>
-                    <p>Lorem Ipsum is simply dummy text of the</p>
-                </a>
-                <div class="item-bg"></div>
-            </div>
+                }
+            }
         </div>
     </div>
 </section>
@@ -613,86 +471,91 @@
             </p>
         </div>
         <div class="testimonials wow fadeInUp">
-            <div class="testimonial">
-                <div class="author-img">
-                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/5.jpg"
-                         alt=""
-                         class="img-fluid rounded" />
-                </div>
-                <div class="author-quote">
-                    <h4>Maecenas varius finibus orci vel</h4>
-                    <blockquote>
-                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-                        vel dignissim. Nam posuere, magna pellentesque accumsan
-                        tincidunt, libero lorem convallis lectus
-                        <i class="fa fa-quote-right"></i>
-                    </blockquote>
-                </div>
+
+            @{
+                foreach (var testimonial in Model.Testimonials)
+                {
+                    <div class="testimonial">
+                        <div class="author-img">
+                            <img style="height:200px;object-fit:cover" src="/assets/images/@testimonial.PhotoName"
+                             alt=""
+                             class="img-fluid rounded" />
+                        </div>
+                        <div class="author-quote">
+                            <h4>@testimonial.Title</h4>
+                            <blockquote>
+                                <i class="fa fa-quote-left"></i> @testimonial.Description
+                                <i class="fa fa-quote-right"></i>
+                            </blockquote>
+                        </div>
+                    </div>
+
+                }
+            }
+            @*  <div class="testimonial">
+            <div class="author-img">
+            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/4.jpg"
+            alt=""
+            class="img-fluid rounded" />
+            </div>
+            <div class="author-quote">
+            <h4>Maecenas varius finibus orci vel</h4>
+            <blockquote>
+            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+            vel dignissim. Nam posuere, magna pellentesque accumsan
+            tincidunt, libero lorem convallis lectus
+            <i class="fa fa-quote-right"></i>
+            </blockquote>
+            </div>
             </div>
             <div class="testimonial">
-                <div class="author-img">
-                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/4.jpg"
-                         alt=""
-                         class="img-fluid rounded" />
-                </div>
-                <div class="author-quote">
-                    <h4>Maecenas varius finibus orci vel</h4>
-                    <blockquote>
-                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-                        vel dignissim. Nam posuere, magna pellentesque accumsan
-                        tincidunt, libero lorem convallis lectus
-                        <i class="fa fa-quote-right"></i>
-                    </blockquote>
-                </div>
+            <div class="author-img">
+            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/3.jpg"
+            alt=""
+            class="img-fluid rounded" />
+            </div>
+            <div class="author-quote">
+            <h4>Maecenas varius finibus orci vel</h4>
+            <blockquote>
+            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+            vel dignissim. Nam posuere, magna pellentesque accumsan
+            tincidunt, libero lorem convallis lectus
+            <i class="fa fa-quote-right"></i>
+            </blockquote>
+            </div>
             </div>
             <div class="testimonial">
-                <div class="author-img">
-                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/3.jpg"
-                         alt=""
-                         class="img-fluid rounded" />
-                </div>
-                <div class="author-quote">
-                    <h4>Maecenas varius finibus orci vel</h4>
-                    <blockquote>
-                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-                        vel dignissim. Nam posuere, magna pellentesque accumsan
-                        tincidunt, libero lorem convallis lectus
-                        <i class="fa fa-quote-right"></i>
-                    </blockquote>
-                </div>
+            <div class="author-img">
+            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/2.jpg"
+            alt=""
+            class="img-fluid rounded" />
+            </div>
+            <div class="author-quote">
+            <h4>Maecenas varius finibus orci vel</h4>
+            <blockquote>
+            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+            vel dignissim. Nam posuere, magna pellentesque accumsan
+            tincidunt, libero lorem convallis lectus
+            <i class="fa fa-quote-right"></i>
+            </blockquote>
+            </div>
             </div>
             <div class="testimonial">
-                <div class="author-img">
-                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/2.jpg"
-                         alt=""
-                         class="img-fluid rounded" />
-                </div>
-                <div class="author-quote">
-                    <h4>Maecenas varius finibus orci vel</h4>
-                    <blockquote>
-                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-                        vel dignissim. Nam posuere, magna pellentesque accumsan
-                        tincidunt, libero lorem convallis lectus
-                        <i class="fa fa-quote-right"></i>
-                    </blockquote>
-                </div>
+            <div class="author-img">
+            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/1.jpg"
+            alt=""
+            class="img-fluid rounded" />
             </div>
-            <div class="testimonial">
-                <div class="author-img">
-                    <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/1.jpg"
-                         alt=""
-                         class="img-fluid rounded" />
-                </div>
-                <div class="author-quote">
-                    <h4>Maecenas varius finibus orci vel</h4>
-                    <blockquote>
-                        <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-                        vel dignissim. Nam posuere, magna pellentesque accumsan
-                        tincidunt, libero lorem convallis lectus
-                        <i class="fa fa-quote-right"></i>
-                    </blockquote>
-                </div>
+            <div class="author-quote">
+            <h4>Maecenas varius finibus orci vel</h4>
+            <blockquote>
+            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
+            vel dignissim. Nam posuere, magna pellentesque accumsan
+            tincidunt, libero lorem convallis lectus
+            <i class="fa fa-quote-right"></i>
+            </blockquote>
             </div>
+            </div>*@
         </div>
     </div>
 </section>

@@ -179,7 +179,8 @@ namespace Web.Areas.Admin.Services.Concrete
                 Colors = await GetColorsSelectAsync(),
                 Sizes = await GetSizesSelectAsync(),
                 CurrentColors = await _productColorRepository.GetProductColorsDetailsAsync(product.Id),
-                CurrentSizes = await _productSizeRepository.GetProductSizesDetailsAsync(product.Id)
+                CurrentSizes = await _productSizeRepository.GetProductSizesDetailsAsync(product.Id),
+                ProductPhotos = product.ProductPhotos
             };
 
             return model;
@@ -223,6 +224,80 @@ namespace Web.Areas.Admin.Services.Concrete
                 }
                 _fileService.Delete(product.MainPhoto);
                 product.MainPhoto = await _fileService.UploadAsync(model.MainPhoto);
+            }
+            if (model.Photos != null)
+            {
+                bool hasError = false;
+                foreach (var photo in model.Photos)
+                {
+                    if (!_fileService.CheckPhoto(photo))
+                    {
+                        _modelState.AddModelError("Photos", $"File must be Image");
+                    }
+                    else if (!_fileService.MaxSize(photo, maxSize))
+                    {
+                        _modelState.AddModelError("Photos", $"Photo size must be less{maxSize} ");
+                    }
+                }
+                if (hasError)
+                {
+                    return false;
+                }
+
+                int order = 1;
+                foreach (var photo in model.Photos)
+                {
+                    var productPhoto = new ProductPhoto
+                    {
+                        Name = await _fileService.UploadAsync(photo),
+                        Order = order,
+                        ProductId = product.Id,
+                        CreatedAt = DateTime.Now,
+
+                    };
+                    order++;
+                    await _productPhotoRepository.CreateAsync(productPhoto);
+                }
+            }
+
+            if (model.ColorsIds != null)
+            {
+                foreach (var color in product.Colors)
+                {
+                    await _productColorRepository.DeleteAsync(color);
+                }
+                foreach (var colorId in model.ColorsIds)
+                {
+                    var color = await _colorRepository.GetAsync(colorId);
+                    if (color == null) return false;
+                    var productColor = new ProductColor
+                    {
+                        ColorId = color.Id,
+                        ModifiedAt = DateTime.Now,
+                        ProductId = product.Id,
+                    };
+                    await _productColorRepository.CreateAsync(productColor);
+                }
+            }
+
+            if (model.SizesIds != null)
+            {
+                foreach (var size in product.Sizes)
+                {
+                    await _productSizeRepository.DeleteAsync(size);
+                }
+                foreach (var sizeId in model.SizesIds)
+                {
+                    var size = await _sizeRepository.GetAsync(sizeId);
+                    if (size == null) return false;
+                    var productSize = new ProductSize
+                    {
+                        ProductId = product.Id,
+                        ModifiedAt = DateTime.Now,
+                        SizeId = size.Id,
+                    };
+                    await _productSizeRepository.CreateAsync(productSize);
+                }
             }
 
             await _productRepository.UpdateAsync(product);
@@ -366,6 +441,38 @@ namespace Web.Areas.Admin.Services.Concrete
                 Product = await _productRepository.GetProductDetailsAsync(id),
             };
             return model;
+        }
+
+        public async Task<bool> PhotoUpdateAsync(ProductPhotoUpdateVM model)
+        {
+            if (!_modelState.IsValid) return false;
+            var photo = await _productPhotoRepository.GetAsync(model.Id);
+            if (photo == null) return false;
+
+            photo.Order = model.Order;
+            await _productPhotoRepository.UpdateAsync(photo);
+            return true;
+
+        }
+
+        public async Task<ProductPhotoUpdateVM> GetPhotoUpdateModelAsync(int id)
+        {
+            var photo = await _productPhotoRepository.GetAsync(id);
+            if (photo == null) return null;
+            var model = new ProductPhotoUpdateVM
+            {
+                Id = photo.Id,
+                Order = photo.Order,
+                ProductId = photo.ProductId,
+            };
+            return model;
+        }
+
+        public async Task DeletePhotoAsync(int id)
+        {
+            var productPhoto = await _productPhotoRepository.GetAsync(id);
+            await _productPhotoRepository.DeleteAsync(productPhoto);
+
         }
 
 

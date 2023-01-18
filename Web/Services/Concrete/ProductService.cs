@@ -21,6 +21,9 @@ namespace Web.Services.Concrete
             _brandRepository = brandRepository;
             _colorRepository = colorRepository;
         }
+
+
+
         public async Task<ProductIndexVM> GetAllAsync(ProductIndexVM model)
         {
             var products = await _productRepository.FilterByName(model.SearchInput);
@@ -47,7 +50,18 @@ namespace Web.Services.Concrete
             var model = new ProductDetailsVM
             {
                 Product = product,
-                RelatedProducts = await _productRepository.GetRelatedProductsAsync(((int)product.Model),((int)product.Gender))
+                RelatedProducts = await _productRepository.GetRelatedProductsAsync(((int)product.Model), ((int)product.Gender))
+            };
+            return model;
+        }
+
+        public async Task<ProductLoadMoreVM> GetLoadMoreAsync(int skipRow)
+        {
+            var products = await _productRepository.ProductsLoadMoreAsync(skipRow);
+            var model = new ProductLoadMoreVM
+            {
+                BestSellingProducts = products,
+                IsLast = await _productRepository.CheckIsLastAsync(skipRow)
             };
             return model;
         }

@@ -105,8 +105,9 @@
                                     <td>@Model.Product.Title</td>
                                     <td style="max-width:305px;">@Html.Raw(Model.Product.Description)</td>
                                     <td>@Model.Product.Model</td>
-                                    <td>@{
-                                        foreach (var productSize in Model.Product.Sizes)
+                                    <td>
+                                        @{
+                                            foreach (var productSize in Model.Product.Sizes)
                                             {
                                                 <p>@productSize.Size.Title</p>
                                             }
@@ -139,7 +140,10 @@
                             <h3 style="width:100%;">Photos</h3>
                             @foreach (var photo in Model.Product.ProductPhotos)
                             {
-                                <img style="width:200px;height:290px;object-fit:cover" class="img img-thumbnail" src="/assets/images/@photo.Name" />
+                                <div>
+                                    <img style="width:200px;height:290px;object-fit:cover" class="img img-thumbnail" src="/assets/images/@photo.Name" />
+                                    <p class="mt-3" style="text-align:center">Order:@photo.Order</p>
+                                </div>
                             }
                         </div>
                     </div>

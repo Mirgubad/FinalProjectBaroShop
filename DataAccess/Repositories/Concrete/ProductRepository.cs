@@ -92,8 +92,31 @@ namespace DataAccess.Repositories.Concrete
                 .Include(pr => pr.Brand)
                 .Include(pr => pr.Colors)
                 .Include(pr => pr.Sizes)
+                .Include(ph => ph.ProductPhotos)
                 .FirstOrDefaultAsync(pr => pr.Id == id);
             return product;
+        }
+
+        public async Task<List<Product>> ProductsLoadMoreAsync(int skipRow)
+        {
+            var products = await _context.Products
+                .Include(pr => pr.Brand)
+                .OrderByDescending(p => p.Id)
+                .Skip(4 * skipRow)
+                .Take(4)
+                .ToListAsync();
+
+            return products;
+
+        }
+
+        public async Task<bool> CheckIsLastAsync(int skipRow)
+        {
+            if (((skipRow + 1) * 4) + 1 >= _context.Products.Count())
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

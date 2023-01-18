@@ -22,8 +22,16 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            var model=await _productService.GetDetailsAsync(id);    
+            var model = await _productService.GetDetailsAsync(id);
             return View(model);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> LoadMore(int skipRow)
+        {
+            var model = await _productService.GetLoadMoreAsync(skipRow);
+            return PartialView("_BestSellingPartial", model);
         }
     }
 }

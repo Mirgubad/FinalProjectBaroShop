@@ -11,19 +11,16 @@ namespace Web.Areas.Admin.ViewModels.Product
     public class ProductCreateVM
     {
         [Required]
+        [MaxLength(100)]
         public string Title { get; set; }
         [Required]
+        [MaxLength(200)]
         public string Description { get; set; }
         [Required]
         public double Price { get; set; }
         public ShippingStatus? ShippingStatus { get; set; }
         public IFormFile MainPhoto { get; set; }
         public List<IFormFile> Photos { get; set; }
-        //[Display(Name = "Colors")]
-        //public int ColorId { get; set; }
-
-        //public List<SelectListItem>? Colors { get; set; }
-
         public Gender Gender { get; set; }
         public Material Material { get; set; }
         public Model Model { get; set; }

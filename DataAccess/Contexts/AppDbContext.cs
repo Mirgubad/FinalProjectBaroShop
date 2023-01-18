@@ -25,6 +25,20 @@ namespace DataAccess.Contexts
         public DbSet<BasketProduct> BasketProducts { get; set; }
         public DbSet<Size> Sizes { get; set; }
         public DbSet<ProductSize> ProductSizes { get; set; }
+        public DbSet<HomeSpecialDay> homeSpecialDay { get; set; }
+        public DbSet<HomeSwiper> HomeSwipers { get; set; }
+        public DbSet<OurService> OurServices { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<QuestionCategory> QuestionsCategories { get; set; }
+        public DbSet<BusinessInfo> BusinessInfos { get; set; }
+        public DbSet<Fact> Facts { get; set; }
+        public DbSet<WhatWedo> WhatWedo { get; set; }
+        public DbSet<Service> Services { get; set; }
+
+
+
+
 
 
     }

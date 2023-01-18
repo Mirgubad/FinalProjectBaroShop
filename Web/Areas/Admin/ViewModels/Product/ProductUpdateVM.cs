@@ -9,14 +9,17 @@ namespace Web.Areas.Admin.ViewModels.Product
     {
         public int Id { get; set; }
         [Required]
+        [MaxLength(100)]
         public string Title { get; set; }
         [Required]
+        [MaxLength(200)]
         public string Description { get; set; }
         [Required]
         public double Price { get; set; }
         public ShippingStatus? ShippingStatus { get; set; }
         public IFormFile? MainPhoto { get; set; }
         public List<IFormFile>? Photos { get; set; }
+        public List<ProductPhoto>? ProductPhotos { get; set; }
 
         public Gender Gender { get; set; }
         public Material Material { get; set; }
