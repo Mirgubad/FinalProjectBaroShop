@@ -1,35 +1,39 @@
-﻿@using Web.Areas.Admin.ViewModels.Testimonial;
-@model TestimonialCreateVM;
+﻿@using Web.Areas.Admin.ViewModels.Service;
+@model ServiceCreateVM;
 
 @{
-    ViewBag.Title = "Home Dashboard";
+    ViewBag.Title = "About Dashboard";
 }
 <div class="row">
     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="section-block" id="basicform">
-            <h3 class="section-title">Testimonial </h3>
+            <h3 class="section-title">Service Create </h3>
         </div>
         <div class="card">
             <div class="card-body">
-                <form asp-action="create" asp-controller="testimonial" asp-area="admin" method="post" enctype="multipart/form-data">
+                <form asp-action="create" asp-controller="service" asp-area="admin" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label asp-for="@Model.Title" class="col-form-label"></label>
                         <input asp-for="@Model.Title" class="form-control">
                         <span class="text-danger" asp-validation-for="@Model.Title"></span>
                     </div>
                     <div class="form-group">
+                        <label asp-for="@Model.SubTitle" class="col-form-label"></label>
+                        <input asp-for="@Model.SubTitle" class="form-control">
+                        <span class="text-danger" asp-validation-for="@Model.SubTitle"></span>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="@Model.Description" class="col-form-label"></label>
                         <textarea asp-for="@Model.Description" class="form-control"></textarea>
                         <span class="text-danger" asp-validation-for="@Model.Description"></span>
                     </div>
-
                     <div class="custom-file mb-3">
-                        <input asp-for="@Model.UserPhoto" class="custom-file-input" id="customFile">
-                        <label class="custom-file-label" for="customFile" asp-for="@Model.UserPhoto"></label>
-                        <span class="text-danger" asp-validation-for="@Model.UserPhoto"></span>
+                        <input asp-for="@Model.Photo" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile" asp-for="@Model.Photo"></label>
+                        <span class="text-danger" asp-validation-for="@Model.Photo"></span>
                     </div>
                     <button class="btn btn-sm btn-outline-success" type="submit">Submit</button>
-                    <a asp-action="index" asp-controller="testimonial" asp-area="admin" class="btn btn-sm btn-outline-light">Cancel</a>
+                    <a asp-action="index" asp-controller="service" asp-area="admin" class="btn btn-sm btn-outline-light">Cancel</a>
                 </form>
             </div>
         </div>
@@ -49,5 +53,4 @@
                 console.error(error);
             });
     </script>
-
     }

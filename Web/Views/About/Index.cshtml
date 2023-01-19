@@ -135,62 +135,33 @@
                 }
 
             </section>
+            @{
+                if (Model.Services.Count > 0)
+                {
+                    <section class="about-services">
+                        <h2 class="about-services-header">
+                            Our range of services in Azerbaijan
+                        </h2>
+                        <div class="about-services-container">
+                            <div class="about-services-inner">
+                                @foreach (var service in Model.Services)
+                                {
+                                    <div class="about-service-item">
+                                        <div class="about-service-img">
+                                            <img src="/assets/images/@service.PhotoName" alt="" />
+                                        </div>
+                                        <div class="about-service-right">
+                                            <h4>@service.Title <span>@service.SubTitle</span></h4>
+                                            @Html.Raw(service.Description)
+                                        </div>
+                                    </div>
+                                }
+                            </div>
 
-            <section class="about-services">
-                <h2 class="about-services-header">
-                    Our range of services in Azerbaijan
-                </h2>
-                <div class="about-services-container">
-                    <div class="about-services-inner">
-                        <div class="about-service-item">
-                            <div class="about-service-img">
-                                <img src="/assets/tymarketplace.svg" alt="" />
-                            </div>
-                            <div class="about-service-right">
-                                <h4>Shopping Marketplace <span>We have it all</span></h4>
-                                <p>
-                                    We offer a broad selection of categories from fashion and
-                                    beauty to homeware and electronics on our platform. Shoppers
-                                    can enjoy the convenience of a “one-stop shop” with seamless
-                                    e-commerce experience. We constantly strive to bring you
-                                    value while ensuring an easy, smooth and enjoyable shopping
-                                    journey.
-                                </p>
-                            </div>
                         </div>
-
-                        <div class="about-service-item">
-                            <div class="about-service-img">
-                                <img src="/assets/tyexpress.svg" alt="" />
-                            </div>
-                            <div class="about-service-right">
-                                <h4>Shopping Express <span>Reliable Logistics</span></h4>
-                                <p>
-                                    Shopping Express is our last-mile delivery solution,
-                                    offering a high-quality delivery experience by combining the
-                                    power of technology with expert teams.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="about-service-item">
-                            <div class="about-service-img">
-                                <img src="/assets/tygo.svg" alt="" />
-                            </div>
-                            <div class="about-service-right">
-                                <h4>Shopping Express <span>Reliable Logistics</span></h4>
-                                <p>
-                                    Easy, fast and reliable – our instant grocery and food
-                                    delivery service, Shopping Go, brings your daily needs to
-                                    your doorstep within minutes. We are constantly expanding
-                                    our network of riders, restaurants, shops and partners on
-                                    our fast-growing delivery platform.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    </section>
+                }
+            }
 
             <section id="contact-info">
                 <div class="contact-inner">
@@ -206,80 +177,75 @@
                             </p>
 
                             <div class="row">
-                                <div class="col-md-7 mb-md-0 mb-5">
-                                    <form id="contact-form"
-                                          name="contact-form"
-                                          action="mail.php"
-                                          method="POST">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="md-form mb-0">
-                                                    <label for="name" class="">Your name</label>
-                                                    <input type="text"
-                                                           id="name"
-                                                           name="name"
+                                @{
+                                    <div class="col-md-7 mb-md-0 mb-5">
+                                        <form method="post" asp-action="sendmessage" asp-controller="about">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="md-form mb-0">
+                                                        <label asp-for="@Model.Message.FullName" ></label>
+                                                        <input asp-for="@Model.Message.FullName"
                                                            class="form-control" />
+                                                        <span class="text-danger" asp-validation-for="@Model.Message.FullName"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="md-form mb-0">
+                                                        <label asp-for="@Model.Message.Email" ></label>
+                                                        <input asp-for="@Model.Message.Email"
+                                                           class="form-control" />
+                                                        <span class="text-danger" asp-validation-for="@Model.Message.Email"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="md-form mb-0">
-                                                    <label for="email" class="">Your email</label>
-                                                    <input type="text"
-                                                           id="email"
-                                                           name="email"
-                                                           class="form-control" />
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="md-form mb-0">
-                                                    <label for="subject" class="">Subject</label>
-                                                    <input type="text"
-                                                           id="subject"
-                                                           name="subject"
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="md-form mb-0">
+                                                        <label asp-for="@Model.Message.Subject"> </label>
+                                                        <input asp-for="@Model.Message.Subject"
                                                            class="form-control" />
+                                                        <span class="text-danger" asp-validation-for="@Model.Message.Subject"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="md-form">
-                                                    <label for="message">Your message</label>
-                                                    <textarea type="text"
-                                                              id="message"
-                                                              name="message"
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="md-form">
+                                                        <label asp-for="@Model.Message.Message"> </label>
+                                                        <textarea type="text"
+                                                              asp-for="@Model.Message.Message"
                                                               rows="2"
                                                               class="form-control md-textarea"></textarea>
-
+                                                        <span class="text-danger" asp-validation-for="@Model.Message.Message"></span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                            <div class="text-center text-md-left mt-4">
+                                                <button type="submit" class="btn bg-orangered text-light">Send</button>
+                                            </div>
+                                        </form>
 
-                                    <div class="text-center text-md-left">
-                                        <a class="btn bg-orangered text-light"
-                                           onclick="document.getElementById('contact-form').submit();">Send</a>
+
+                                        <div class="status"></div>
                                     </div>
-                                    <div class="status"></div>
-                                </div>
+                                }
 
                                 <div class="col-md-3 text-center">
                                     <ul class="list-unstyled mb-0">
                                         <li>
                                             <i class="fas fa-map-marker-alt fa-2x"></i>
-                                            <p>Baku, Babek Ave 12, Azerbaijan</p>
+                                            <p>@Model.ContactInfo.Address</p>
                                         </li>
 
                                         <li>
                                             <i class="fas fa-phone mt-4 fa-2x"></i>
-                                            <p>+994559911121</p>
+                                            <p>@Model.ContactInfo.MobileNumber</p>
                                         </li>
 
                                         <li>
                                             <i class="fas fa-envelope mt-4 fa-2x"></i>
-                                            <p>mirqubad@gmail.com</p>
+                                            <p>@Model.ContactInfo.Email</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -437,6 +403,8 @@
             integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
+
+    @await Html.PartialAsync("_FormValidationPartial")
 
 </body>
 </html>

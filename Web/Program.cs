@@ -76,6 +76,10 @@ builder.Services.AddScoped<IBusinessInfoRepository, BusinessInfoRepository>();
 builder.Services.AddScoped<IFactRepository, FactRepository>();
 builder.Services.AddScoped<IWhatWeDoRepository, WhatWeDoRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+builder.Services.AddScoped<ISendMessageRepository, SendMessageRepository>();
+builder.Services.AddScoped<IContactRepository, ContactRepository>();
+
+
 
 
 
@@ -119,6 +123,10 @@ builder.Services.AddScoped<AdminAbstractService.IBusinessInfoService, AdminConcr
 builder.Services.AddScoped<AdminAbstractService.IFactService, AdminConcreteService.FactService>();
 builder.Services.AddScoped<AdminAbstractService.IWhatWeDoService, AdminConcreteService.WhatWeDoService>();
 builder.Services.AddScoped<AdminAbstractService.IServiceService, AdminConcreteService.ServiceService>();
+builder.Services.AddScoped<AdminAbstractService.IMessageService, AdminConcreteService.MessageService>();
+builder.Services.AddScoped<AdminAbstractService.IContactService, AdminConcreteService.ContactService>();
+
+
 
 
 

@@ -8,5 +8,8 @@ namespace Web.ViewModels.About
         public List<Fact> Facts { get; set; }
 
         public WhatWedo WhatWedo { get; set; }
+        public List<Service> Services { get; set; }
+        public SendMessage Message { get; set; }
+        public Contact ContactInfo { get; set; }
     }
 }

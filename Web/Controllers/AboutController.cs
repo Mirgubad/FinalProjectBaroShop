@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Entities;
+using Microsoft.AspNetCore.Mvc;
 using Web.Services.Abstract;
 
 namespace Web.Controllers
@@ -16,5 +17,15 @@ namespace Web.Controllers
             var model = await _aboutService.GetAllAsync();
             return View(model);
         }
+
+        #region SendMessage
+        [HttpPost]
+        public async Task<IActionResult> SendMessage(SendMessage message)
+        {
+            var isSucceded = await _aboutService.SendMessageAsync(message);
+            if (isSucceded) return RedirectToAction(nameof(Index));
+            return View(message);
+        }
+        #endregion
     }
 }

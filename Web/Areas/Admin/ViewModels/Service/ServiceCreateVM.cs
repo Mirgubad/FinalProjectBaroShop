@@ -11,6 +11,8 @@ namespace Web.Areas.Admin.ViewModels.Service
         [Required, MaxLength(30)]
         public string SubTitle { get; set; }
         [Required]
+        public string Description { get; set; }
+        [Required]
         public IFormFile Photo { get; set; }
     }
 }

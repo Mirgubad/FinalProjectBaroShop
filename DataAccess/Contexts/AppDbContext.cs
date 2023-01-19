@@ -35,6 +35,8 @@ namespace DataAccess.Contexts
         public DbSet<Fact> Facts { get; set; }
         public DbSet<WhatWedo> WhatWedo { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<SendMessage> SendMessages { get; set; }
+        public DbSet<Contact> Contact { get; set; }
 
 
 

@@ -50,7 +50,7 @@ namespace Web.Areas.Admin.Controllers
         {
             if (id != model.Id) return BadRequest();
             var isSucceded = await _testimonialService.UpdateAsync(model);
-            if (isSucceded) return RedirectToAction(nameof(Index), "tesimonial");
+            if (isSucceded) return RedirectToAction(nameof(Index));
             return View(model);
         }
         #endregion

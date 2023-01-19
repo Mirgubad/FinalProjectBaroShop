@@ -1,5 +1,5 @@
 ﻿@using Web.Areas.Admin.ViewModels.Testimonial;
-@model TestimonialCreateVM;
+@model TestimonialUpdateVM;
 
 @{
     ViewBag.Title = "Home Dashboard";
@@ -11,7 +11,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <form asp-action="create" asp-controller="testimonial" asp-area="admin" method="post" enctype="multipart/form-data">
+                <form asp-action="update" asp-controller="testimonial" asp-area="admin" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label asp-for="@Model.Title" class="col-form-label"></label>
                         <input asp-for="@Model.Title" class="form-control">
@@ -38,6 +38,7 @@
 
 @section Scripts{
     @await Html.PartialAsync("_FormValidationPartial")
+
     <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
@@ -49,5 +50,4 @@
                 console.error(error);
             });
     </script>
-
     }
