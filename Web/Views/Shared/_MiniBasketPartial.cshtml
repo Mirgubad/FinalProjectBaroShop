@@ -1,0 +1,55 @@
+﻿@using Web.ViewModels.Basket;
+@model BasketIndexVM;
+
+@{
+
+    if (Model.Count > 0)
+    {
+        double sum = 0;
+        foreach (var product in Model.BasketProducts)
+        {
+            var totalPrice = product.Price * product.Quantity;
+            sum += totalPrice;
+
+            <div class="cart-item border-bottom py-2 basket-products d-flex align-items-center" id="@product.Id">
+                <a asp-action="details" asp-controller="product" asp-route-id="@product.Id"
+       class="row">
+                    <div class="cart-item--image col-3">
+                        <img src="~/assets/images/@product.Photoname"
+                 alt="@product.Title" />
+                    </div>
+                    <div class="cart-item--description d-flex flex-column justify-content-start col-6">
+                        <h5 style="overflow: hidden;text-align: left;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical" class="item-description--title fs-16 serif translatable">
+                            <span class="visually-hidden">product title</span>
+                            @product.Title
+                        </h5>
+                        <p class="mb-0 text-secondary sans fs-14 fw-bold">x @product.Quantity</p>
+                    </div>
+                    <div class="cart-item--price col-3 text-right serif mono">
+                        <span class="price">@product.Price$</span>
+
+                    </div>
+                </a>
+                <i data-quantity="@product.Quantity" data-id="@product.Id" class="fa fa-trash basket-delete" aria-hidden="true"></i>
+            </div>
+        }
+
+
+        <div>Total Price:<span style="font-size:16px" id="sum-price">@sum</span>$</div>
+
+        <div class="cart-info">
+            <div class="cart-buttons d-flex justify-content-between align-items-center pt-1">
+                <a asp-action="index" asp-controller="basket"
+           class="btn btn-sm btn-underline-primary sans fs-14">View bag</a>
+                <a class="text-uppercase fs-12 tk-brandon-grotesque btn btn-sm btn-primary btn-xs-block"
+               id="drawerCheckoutButton">Checkout</a>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="text-center mb-5"><p>Shopping card is Empty...</p></div>
+    }
+
+}

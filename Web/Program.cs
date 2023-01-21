@@ -78,6 +78,12 @@ builder.Services.AddScoped<IWhatWeDoRepository, WhatWeDoRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<ISendMessageRepository, SendMessageRepository>();
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
+builder.Services.AddScoped<IBasketRepository, BasketRepository>();
+builder.Services.AddScoped<IBasketProductRepository, BasketProductRepository>();
+
+
+
 
 
 
@@ -101,6 +107,8 @@ builder.Services.AddScoped<IHomeService, HomeService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IFaqService, FaqService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IBasketService, BasketService>();
+
 
 
 
@@ -125,6 +133,8 @@ builder.Services.AddScoped<AdminAbstractService.IWhatWeDoService, AdminConcreteS
 builder.Services.AddScoped<AdminAbstractService.IServiceService, AdminConcreteService.ServiceService>();
 builder.Services.AddScoped<AdminAbstractService.IMessageService, AdminConcreteService.MessageService>();
 builder.Services.AddScoped<AdminAbstractService.IContactService, AdminConcreteService.ContactService>();
+builder.Services.AddScoped<AdminAbstractService.ILocationService, AdminConcreteService.LocationService>();
+
 
 
 

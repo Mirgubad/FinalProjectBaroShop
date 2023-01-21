@@ -91,7 +91,7 @@
                     <span class="product-title">
                         <strong>@Model.Product.Brand.Title</strong> @Model.Product.Title
                     </span>
-                    <p class="price">@Model.Product.Price.99$</p>
+                    <p class="price">@Model.Product.Price$</p>
                 </div>
                 <div class="color">
                     <p class="choosen-color">
@@ -190,7 +190,7 @@
                     <label class="btn btn-light" for="xxxl">XXXL</label>*@
                 </div>
                 <div class="add-section">
-                    <button class="add-basket-btn">Add To Basket</button>
+                    <button class="add-basket-btn" data-id="@Model.Product.Id">Add To Basket</button>
                     <div class="details-wish-btn">
                         <a class="product-heart"><i class="fa fa-heart" aria-hidden="true"></i></a>
                     </div>
@@ -223,7 +223,7 @@
                                             <img src="/assets/images/@relatedProduct.MainPhoto" alt="@relatedProduct.Title" />
                                         </div>
                                         <p style="overflow: hidden;text-align: left;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;"><strong>@relatedProduct.Brand.Title</strong>  @relatedProduct.Title</p>
-                                        <span>@relatedProduct.Price.99$</span>
+                                        <span>@relatedProduct.Price$</span>
                                         <i class="fa fa-heart wish-list product-heart" data-id="@relatedProduct.Id" aria-hidden="true"></i>
                                     </div>
                                 </li>

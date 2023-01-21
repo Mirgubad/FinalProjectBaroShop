@@ -38,6 +38,7 @@ namespace DataAccess.Contexts
         public DbSet<SendMessage> SendMessages { get; set; }
         public DbSet<Contact> Contact { get; set; }
 
+        public DbSet<Location> Location { get; set; }
 
 
 

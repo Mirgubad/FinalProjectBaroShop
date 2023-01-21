@@ -4,6 +4,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230120024747_LocationsAdded")]
+    partial class LocationsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,7 +47,7 @@ namespace DataAccess.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Basket", (string)null);
+                    b.ToTable("Basket");
                 });
 
             modelBuilder.Entity("Core.Entities.BasketProduct", b =>
@@ -77,7 +79,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BasketProducts", (string)null);
+                    b.ToTable("BasketProducts");
                 });
 
             modelBuilder.Entity("Core.Entities.Brand", b =>
@@ -104,7 +106,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("Core.Entities.BusinessInfo", b =>
@@ -131,7 +133,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BusinessInfos", (string)null);
+                    b.ToTable("BusinessInfos");
                 });
 
             modelBuilder.Entity("Core.Entities.Color", b =>
@@ -154,7 +156,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors", (string)null);
+                    b.ToTable("Colors");
                 });
 
             modelBuilder.Entity("Core.Entities.Contact", b =>
@@ -185,7 +187,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Contact", (string)null);
+                    b.ToTable("Contact");
                 });
 
             modelBuilder.Entity("Core.Entities.Fact", b =>
@@ -212,7 +214,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Facts", (string)null);
+                    b.ToTable("Facts");
                 });
 
             modelBuilder.Entity("Core.Entities.HomeMainSlider", b =>
@@ -249,7 +251,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HomeMainSlider", (string)null);
+                    b.ToTable("HomeMainSlider");
                 });
 
             modelBuilder.Entity("Core.Entities.HomeSpecialDay", b =>
@@ -295,7 +297,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("homeSpecialDay", (string)null);
+                    b.ToTable("homeSpecialDay");
                 });
 
             modelBuilder.Entity("Core.Entities.HomeSwiper", b =>
@@ -329,7 +331,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HomeSwipers", (string)null);
+                    b.ToTable("HomeSwipers");
                 });
 
             modelBuilder.Entity("Core.Entities.Question", b =>
@@ -361,7 +363,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("QuestionCategoryId");
 
-                    b.ToTable("Questions", (string)null);
+                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Core.Entities.QuestionCategory", b =>
@@ -391,7 +393,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("QuestionsCategories", (string)null);
+                    b.ToTable("QuestionsCategories");
                 });
 
             modelBuilder.Entity("Core.Entities.Location", b =>
@@ -414,7 +416,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Location", (string)null);
+                    b.ToTable("Location");
                 });
 
             modelBuilder.Entity("Core.Entities.OurService", b =>
@@ -445,7 +447,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OurServices", (string)null);
+                    b.ToTable("OurServices");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
@@ -502,7 +504,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Core.Entities.ProductColor", b =>
@@ -531,7 +533,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductColors", (string)null);
+                    b.ToTable("ProductColors");
                 });
 
             modelBuilder.Entity("Core.Entities.ProductPhoto", b =>
@@ -562,7 +564,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductPhotos", (string)null);
+                    b.ToTable("ProductPhotos");
                 });
 
             modelBuilder.Entity("Core.Entities.ProductSize", b =>
@@ -591,7 +593,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("SizeId");
 
-                    b.ToTable("ProductSizes", (string)null);
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("Core.Entities.SendMessage", b =>
@@ -629,7 +631,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SendMessages", (string)null);
+                    b.ToTable("SendMessages");
                 });
 
             modelBuilder.Entity("Core.Entities.Service", b =>
@@ -664,7 +666,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("Core.Entities.Size", b =>
@@ -687,7 +689,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sizes", (string)null);
+                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Core.Entities.SpecialSlider", b =>
@@ -725,7 +727,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SpecialSlider", (string)null);
+                    b.ToTable("SpecialSlider");
                 });
 
             modelBuilder.Entity("Core.Entities.Testimonial", b =>
@@ -756,7 +758,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Testimonials", (string)null);
+                    b.ToTable("Testimonials");
                 });
 
             modelBuilder.Entity("Core.Entities.User", b =>
@@ -856,7 +858,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WhatWedo", (string)null);
+                    b.ToTable("WhatWedo");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

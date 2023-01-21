@@ -11,5 +11,6 @@ namespace Web.ViewModels.About
         public List<Service> Services { get; set; }
         public SendMessage Message { get; set; }
         public Contact ContactInfo { get; set; }
+        public Location Map { get; set; }
     }
 }

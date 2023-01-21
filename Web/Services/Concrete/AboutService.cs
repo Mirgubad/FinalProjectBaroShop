@@ -16,6 +16,7 @@ namespace Web.Services.Concrete
         private readonly IServiceRepository _serviceRepository;
         private readonly ISendMessageRepository _sendMessageRepository;
         private readonly IContactRepository _contactRepository;
+        private readonly ILocationRepository _locationRepository;
         private readonly ModelStateDictionary _modelState;
 
         public AboutService(IBusinessInfoRepository businessInfoRepository,
@@ -24,7 +25,8 @@ namespace Web.Services.Concrete
             IServiceRepository serviceRepository,
             ISendMessageRepository sendMessageRepository,
             IActionContextAccessor actionContextAccessor,
-            IContactRepository contactRepository)
+            IContactRepository contactRepository,
+            ILocationRepository locationRepository)
         {
             _businessInfoRepository = businessInfoRepository;
             _factRepository = factRepository;
@@ -32,6 +34,7 @@ namespace Web.Services.Concrete
             _serviceRepository = serviceRepository;
             _sendMessageRepository = sendMessageRepository;
             _contactRepository = contactRepository;
+            _locationRepository = locationRepository;
             _modelState = actionContextAccessor.ActionContext.ModelState;
         }
         public async Task<AboutIndexVM> GetAllAsync()
@@ -43,6 +46,7 @@ namespace Web.Services.Concrete
                 WhatWedo = await _whatWeDoRepository.GetAsync(),
                 Services = await _serviceRepository.GetAllAsync(),
                 ContactInfo = await _contactRepository.GetAsync(),
+                Map = await _locationRepository.GetAsync(),
             };
             return model;
         }
