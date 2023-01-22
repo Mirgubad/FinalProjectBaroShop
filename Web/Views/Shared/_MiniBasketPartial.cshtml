@@ -30,12 +30,12 @@
 
                     </div>
                 </a>
-                <i data-quantity="@product.Quantity" data-id="@product.Id" class="fa fa-trash basket-delete" aria-hidden="true"></i>
+                <i data-quantity="@product.Quantity" data-price="@product.Price" data-id="@product.Id" class="fa fa-trash mini-basket-delete" aria-hidden="true"></i>
             </div>
         }
 
 
-        <div>Total Price:<span style="font-size:16px" id="sum-price">@sum</span>$</div>
+        <div>Total Price:<span style="font-size:16px" id="mini-basket-sum-price">@sum</span>$</div>
 
         <div class="cart-info">
             <div class="cart-buttons d-flex justify-content-between align-items-center pt-1">

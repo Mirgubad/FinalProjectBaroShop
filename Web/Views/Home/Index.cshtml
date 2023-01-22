@@ -204,23 +204,26 @@
                 @{
                     foreach (var product in Model.BestSellingProducts)
                     {
-                        <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
-                            <div class="best-selling-item">
-                                <div class="best-sell-img">
+
+                        <div class="best-selling-item">
+                            <div class="best-sell-img">
+                                <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
                                     <img src="/assets/images/@product.MainPhoto" alt="" />
-                                </div>
-                                <div class="item-info">
-                                    <p title="@product.Title">
-                                        <strong>@product.Brand.Title</strong>
-                                        @product.Title
-                                    </p>
-                                    <span class="price">@product.Price$</span>
-                                </div>
-                                <i class="fa fa-heart wish-list product-heart"
-                               aria-hidden="true"></i>
+                                </a>
                             </div>
-                        </a>
+                            <div class="item-info">
+                                <p title="@product.Title">
+                                    <strong>@product.Brand.Title</strong>
+                                    @product.Title
+                                </p>
+                                <span class="price">@product.Price$</span>
+                            </div>
+                            <i data-id="@product.Id" class="fa fa-heart wish-list product-heart"
+                           aria-hidden="true"></i>
+                        </div>
+
                     }
+
                 }
 
                 <div class="load-more">
@@ -278,22 +281,24 @@
                 @{
                     foreach (var inSaleProduct in Model.InSaleProducts)
                     {
-                        <a asp-action="details" asp-controller="product" asp-route-id="@inSaleProduct.Id">
-                            <div class="in-sale-item">
-                                <div class="in-sale-img">
+
+                        <div class="in-sale-item">
+                            <div class="in-sale-img">
+                                <a asp-action="details" asp-controller="product" asp-route-id="@inSaleProduct.Id">
                                     <img src="/assets/images/@inSaleProduct.MainPhoto" alt="" />
-                                </div>
-                                <div class="item-info">
-                                    <p title="@inSaleProduct.Title">
-                                        <strong>@inSaleProduct.Brand.Title</strong>
-                                        @inSaleProduct.Title
-                                    </p>
-                                    <span>@inSaleProduct.Price$</span>
-                                </div>
-                                <i class="fa fa-heart wish-list product-heart"
-                               aria-hidden="true"></i>
+                                </a>
                             </div>
-                        </a>
+                            <div class="item-info">
+                                <p title="@inSaleProduct.Title">
+                                    <strong>@inSaleProduct.Brand.Title</strong>
+                                    @inSaleProduct.Title
+                                </p>
+                                <span>@inSaleProduct.Price$</span>
+                            </div>
+                            <i data-id="@inSaleProduct.Id" class="fa fa-heart wish-list product-heart"
+                           aria-hidden="true"></i>
+                        </div>
+
                     }
                 }
                 @* <div class="in-sale-item">

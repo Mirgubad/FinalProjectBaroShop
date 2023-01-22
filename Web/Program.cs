@@ -108,6 +108,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IFaqService, FaqService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddScoped<IFavouriteService, FavouriteService>();
+
+
 
 
 

@@ -50,6 +50,6 @@ $(window).scroll(function () {
       .css("bottom", "10px")
       .css("right", "10px");
   } else {
-    $scrollingDiv.css("position", "").css("top", "");
+    $scrollingDiv.css("position", "fixed").css("right", "-1000px");
   }
 });

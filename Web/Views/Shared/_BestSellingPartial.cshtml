@@ -4,22 +4,22 @@
 @{
     foreach (var product in Model.BestSellingProducts)
     {
-        <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
-            <div class="best-selling-item">
-                <div class="best-sell-img">
+        <div class="best-selling-item">
+            <div class="best-sell-img">
+                <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
                     <img src="/assets/images/@product.MainPhoto" alt="" />
-                </div>
-                <div class="item-info">
-                    <p title="@product.Title">
-                        <strong>@product.Brand.Title</strong>
-                        @product.Title
-                    </p>
-                    <span class="price">@product.Price.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-               aria-hidden="true"></i>
+                </a>
             </div>
-        </a>
+            <div class="item-info">
+                <p title="@product.Title">
+                    <strong>@product.Brand.Title</strong>
+                    @product.Title
+                </p>
+                <span class="price">@product.Price.99$</span>
+            </div>
+            <i data-id="@product.Id" class="fa fa-heart wish-list product-heart"
+           aria-hidden="true"></i>
+        </div>
     }
 
 

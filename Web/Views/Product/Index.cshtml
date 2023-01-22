@@ -163,9 +163,12 @@
                                 <div class="product-heart" data-id="@product.Id">
                                     <i class="fa fa-heart" aria-hidden="true"></i>
                                 </div>
-                                <div class="add-basket-btn" data-id="@product.Id">
-                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="add-basket-btn" data-id="@product.Id">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    </div>
+                                }
                             </div>
                         </div>
                     }

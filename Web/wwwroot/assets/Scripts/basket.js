@@ -7,37 +7,6 @@ $(document).ready(function () {
 });
 
 
-var favourite = [];
-
-$(document).ready(function () {
-    $(".product-heart").click(function () {
-        var id = $(this).data("id");
-        var isExist = favourite.includes(id);
-
-        if (isExist) {
-
-            $(".notification-error").fadeIn(1000);
-            setTimeout(() => {
-                $(".notification-error").fadeOut(3000);
-            }, 2000);
-            return;
-        } else {
-            favourite.push(id);
-            $(this).css("color", "red")
-            $(this).css("background", "white")
-            localStorage.setItem("favouritesId", JSON.stringify(favourite));
-            $(".notification-success").fadeIn(1000);
-            setTimeout(() => {
-                $(".notification-success").fadeOut(3000);
-            }, 2000);
-        }
-    });
-});
-
-var wishList = document.getElementById("wish-inner");
-var favouriteBtn = document.getElementById("favourites-btn");
-
-
 $(document).ready(function () {
     $(".add-basket-btn").click(function () {
 
@@ -69,11 +38,21 @@ $(document).ready(function () {
 $(document).ready(function () {
     $(".wish-delete").click(function () {
         var id = $(this).data("id")
-        $(`.wish-item[id=${id}]`).hide()
-        $(".notification-remove").fadeIn(1000);
-        setTimeout(() => {
-            $(".notification-remove").fadeOut(3000);
-        }, 2000);
+
+        $.ajax({
+            method: "POST",
+            url: "favourite/delete",
+            data: {
+                id: id
+            },
+            success: function (result) {
+                $(`.wish-item[id=${id}]`).remove()
+                $(".notification-remove").fadeIn(1000);
+                setTimeout(() => {
+                    $(".notification-remove").fadeOut(3000);
+                }, 2000);
+            }
+        })
     })
 })
 
@@ -97,8 +76,14 @@ $(document).on("click", '.basket-delete', function () {
     var basketCount = $('#basketCount')
     var basketCurrentCount = $('#basketCount').html()
     var quantity = $(this).data('quantity')
+    var count = $(`#form-${id}`).val()
     var sum = basketCurrentCount - quantity
     var itemTotalCount = $('#item-count')
+    var price = $(this).data('price')
+    var sumPrice = $('#sum-price').html()
+    var sumPriceLast = $('#sum-price')
+
+
     $.ajax({
         method: "POST",
         url: "/basket/delete",
@@ -114,7 +99,51 @@ $(document).on("click", '.basket-delete', function () {
             itemTotalCount.html("")
             itemTotalCount.append(sum + " items")
             basketCount.append(sum)
+            sumPriceLast.html("")
+            sumPriceLast.append(sumPrice - price * count)
+            $(".notification-remove").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-remove").fadeOut(3000);
+            }, 2000);
+        }
+    })
+})
 
+
+$(document).on("click", '.mini-basket-delete', function () {
+    var id = $(this).data('id')
+    var basketCountContainer = $("#basket-count")
+    var basketCount = $('#basketCount')
+    var basketCurrentCount = $('#basketCount').html()
+    var quantity = $(this).data('quantity')
+    var sum = basketCurrentCount - quantity
+    var itemTotalCount = $('#mini-basket-item-count')
+    var price = $(this).data('price')
+    var sumPrice = $('#mini-basket-sum-price').html()
+    var sumPriceLast = $('#mini-basket-sum-price')
+
+
+    $.ajax({
+        method: "POST",
+        url: "/basket/delete",
+        data: {
+            id: id
+        },
+        success: function (result) {
+            if (sum == 0) {
+                basketCountContainer.hide()
+            }
+            $(`.basket-products[id=${id}]`).remove();
+            basketCount.html("")
+            basketCount.append(sum)
+            //itemTotalCount.html("")
+            //itemTotalCount.append(sum + " items")
+            sumPriceLast.html("")
+            sumPriceLast.append(sumPrice - price * quantity)
+            $(".notification-remove").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-remove").fadeOut(3000);
+            }, 2000);
         }
     })
 })
@@ -152,6 +181,10 @@ $(document).on("click", '.decrease', function () {
                 sumPriceLast.html("")
                 sumPriceLast.append(sumPrice - price)
             }
+            $(".notification-remove").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-remove").fadeOut(3000);
+            }, 2000);
 
         }
     })
@@ -186,10 +219,40 @@ $(document).on("click", '.increase', function () {
             sumPriceLast.append(sumPrice + price)
             itemTotalCount.append(basketCurrentCount + " items")
             total.append(sum + "$")
+            $(".notification-success").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-success").fadeOut(3000);
+            }, 2000);
         }
     })
 })
 
 
+$(document).on('click', '.product-heart', function () {
+    var id = $(this).data('id');
+
+    $.ajax({
+        method: "POST",
+        url: "https://localhost:44386/favourite/add",
+        data: {
+            id: id
+        },
+        success: function (result) {
+            $(this).css("color", "red")
+            $(this).css("background", "white")
+            $(".notification-success").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-success").fadeOut(3000);
+            }, 2000);
+        },
+        error: function () {
+            $(".notification-error").fadeIn(1000);
+            setTimeout(() => {
+                $(".notification-error").fadeOut(3000);
+            }, 2000);
+        }
+
+    })
+})
 
 
