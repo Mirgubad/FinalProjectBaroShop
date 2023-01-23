@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
+﻿@import url("https://fonts.googleapis.com/css?family=Roboto:400,900");
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i");
 
@@ -4829,4 +4829,561 @@ a.ssolink {
 
 
 
+
+:root {
+    --loader-size: 150px;
+    --text-color: #CECECE; /* Fill data-text */
+    --color-one: #2979FF;
+    --color-two: #FF1744;
+    --color-three: #FFFF8D;
+    --color-four: #B2FF59;
+    --light-size: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ █ */
+
+.loader-main {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 99999;
+    background: #04021f;
+}
+
+.loader-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 9999;
+    width: 150px;
+    width: var(--loader-size, 150px);
+    min-width: 110px;
+    height: 150px;
+    min-height: 110px;
+    overflow: visible;
+}
+
+.Loader {
+    margin: 20px;
+    border-radius: 50%;
+    box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+
+
+    .Loader::after {
+        content: attr(data-text);
+        color: #CECECE;
+        color: var(--text-color, #CECECE);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        font-size: calc(70% + 0.10vw);
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
+
+
+
+.Loader {
+    /* Keep ratio on resize*/
+}
+
+
+
+    .Loader::before {
+        content: '';
+        float: left;
+        padding-top: 100%;
+    }
+
+
+
+.Loader__Circle {
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
+    mix-blend-mode: screen;
+    filter: brightness(120%);
+    -webkit-animation-name: SpinAround;
+    animation-name: SpinAround;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear
+}
+
+
+
+    .Loader__Circle:nth-of-type(1) {
+        box-shadow: inset 1px 0 0 1px #2979FF, 3px 0 0 3px #2979FF;
+        box-shadow: inset 1px 0 0 1px var(--color-one, #2979FF), var(--light-size, 4px) 0 0 var(--light-size, 4px) var(--color-one, #2979FF);
+        animation-direction: reverse;
+        transform-origin: 49.6% 49.8%;
+    }
+
+
+
+    .Loader__Circle:nth-of-type(2) {
+        box-shadow: inset 1px 0 0 1px #FF1744, 3px 0px 0 3px #FF1744;
+        box-shadow: inset 1px 0 0 1px var(--color-two, #FF1744), var(--light-size, 4px) 0px 0 var(--light-size, 4px) var(--color-two, #FF1744);
+        transform-origin: 49.5% 49.8%;
+    }
+
+
+
+    .Loader__Circle:nth-of-type(3) {
+        box-shadow: inset 1px 0 0 1px #FFFF8D, 0 3px 0 3px #FFFF8D;
+        box-shadow: inset 1px 0 0 1px var(--color-three, #FFFF8D), 0 var(--light-size, 4px) 0 var(--light-size, 4px) var(--color-three, #FFFF8D);
+        transform-origin: 49.8% 49.8%;
+    }
+
+
+
+    .Loader__Circle:nth-of-type(4) {
+        box-shadow: inset 1px 0 0 1px #B2FF59, 0 3px 0 3px #B2FF59;
+        box-shadow: inset 1px 0 0 1px var(--color-four, #B2FF59), 0 var(--light-size, 4px) 0 var(--light-size, 4px) var(--color-four, #B2FF59);
+        transform-origin: 49.7% 49.7%;
+    }
+
+
+
+@-webkit-keyframes SpinAround {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+
+@keyframes SpinAround {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+
+
+.loader-2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+    display: none;
+}
+
+
+
+main {
+    padding: 1.5em 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}
+
+.lp {
+    width: 8em;
+    height: 8em;
+}
+
+.lp__drops,
+.lp__fall-line,
+.lp__worm {
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    transform-origin: 64px 64px;
+}
+
+.lp__drops {
+    animation-name: drops;
+    animation-timing-function: ease-in-out;
+    stroke-dasharray: 22 307.85 22;
+    visibility: hidden;
+    transform: rotate(90deg);
+}
+
+.lp__fall-line {
+    animation-name: fallLine1;
+    animation-timing-function: ease-in;
+    stroke-dasharray: 1 112;
+    stroke-dashoffset: 114;
+}
+
+.lp__fall-line--delay1 {
+    animation-name: fallLine2;
+}
+
+.lp__fall-line--delay2 {
+    animation-name: fallLine3;
+}
+
+.lp__fall-line--delay3 {
+    animation-name: fallLine4;
+}
+
+.lp__fall-line--delay4 {
+    animation-name: fallLine5;
+}
+
+.lp__ring {
+    stroke: hsla(var(--hue),90%,5%,0.1);
+    transition: stroke 0.3s;
+}
+
+.lp__worm {
+    animation-name: worm;
+    stroke-dasharray: 43.98 307.87;
+    stroke-dashoffset: -131.94;
+    transform: rotate(-90deg);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: hsl(var(--hue),90%,5%);
+        --fg: hsl(var(--hue),90%,95%);
+    }
+
+    .lp__ring {
+        stroke: hsla(var(--hue),90%,95%,0.1);
+    }
+}
+
+/* Animtions */
+@keyframes drops {
+    from {
+        animation-timing-function: steps(1,end);
+        stroke-dasharray: 0 351.85 0;
+        visibility: hidden;
+    }
+
+    25% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 351.85 0;
+        visibility: visible;
+    }
+
+    26% {
+        stroke-dasharray: 4 343.85 4;
+    }
+
+    27% {
+        stroke-dasharray: 8 335.85 8
+    }
+
+    28% {
+        stroke-dasharray: 12 327.85 12;
+    }
+
+    29% {
+        animation-timing-function: ease-in;
+        stroke-dasharray: 17 317.85 17;
+    }
+
+    32% {
+        animation-timing-function: ease-out;
+        stroke-dasharray: 25 301.85 25;
+    }
+
+    35%, 47.5% {
+        animation-timing-function: linear;
+        stroke-dasharray: 22 307.85 22;
+        visibility: visible;
+    }
+
+    50% {
+        animation-timing-function: steps(1,end);
+        stroke-dasharray: 0 307.85 43.98;
+        visibility: hidden;
+    }
+
+    75% {
+        animation-timing-function: ease-in-out;
+        stroke-dasharray: 0 351.85 0;
+        visibility: visible;
+    }
+
+    76% {
+        stroke-dasharray: 4 343.85 4;
+    }
+
+    77% {
+        stroke-dasharray: 8 335.85 8
+    }
+
+    78% {
+        stroke-dasharray: 12 327.85 12;
+    }
+
+    79% {
+        animation-timing-function: ease-in;
+        stroke-dasharray: 17 317.85 17;
+    }
+
+    82% {
+        animation-timing-function: ease-out;
+        stroke-dasharray: 25 301.85 25;
+    }
+
+    85%, 97.5% {
+        animation-timing-function: linear;
+        stroke-dasharray: 22 307.85 22;
+        visibility: visible;
+    }
+
+    to {
+        stroke-dasharray: 43.98 307.85 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fallLine1 {
+    from, 15% {
+        stroke-dashoffset: 114;
+    }
+
+    25%, 65% {
+        stroke-dashoffset: 1;
+    }
+
+    75%, to {
+        stroke-dashoffset: -112;
+    }
+}
+
+@keyframes fallLine2 {
+    from, 16% {
+        stroke-dashoffset: 114;
+    }
+
+    26%, 66% {
+        stroke-dashoffset: 1;
+    }
+
+    76%, to {
+        stroke-dashoffset: -112;
+    }
+}
+
+@keyframes fallLine3 {
+    from, 17% {
+        stroke-dashoffset: 114;
+    }
+
+    27%, 67% {
+        stroke-dashoffset: 1;
+    }
+
+    77%, to {
+        stroke-dashoffset: -112;
+    }
+}
+
+@keyframes fallLine4 {
+    from, 18% {
+        stroke-dashoffset: 114;
+    }
+
+    28%, 68% {
+        stroke-dashoffset: 1;
+    }
+
+    78%, to {
+        stroke-dashoffset: -112;
+    }
+}
+
+@keyframes fallLine5 {
+    from, 19% {
+        stroke-dashoffset: 114;
+    }
+
+    29%, 69% {
+        stroke-dashoffset: 1;
+    }
+
+    79%, to {
+        stroke-dashoffset: -112;
+    }
+}
+
+@keyframes worm {
+    from {
+        animation-timing-function: ease-out;
+        stroke-dasharray: 87.96 307.87;
+        stroke-dashoffset: -131.94;
+    }
+
+    25% {
+        animation-timing-function: steps(1);
+        stroke-dasharray: 87.96 307.87;
+        stroke-dashoffset: -307.86;
+    }
+
+    25.01% {
+        animation-timing-function: ease-in;
+        stroke-dasharray: 43.98 307.87;
+        stroke-dashoffset: -307.86;
+    }
+
+    50% {
+        animation-timing-function: steps(1);
+        stroke-dasharray: 43.98 307.87;
+        stroke-dashoffset: -175.92;
+    }
+
+    50.01% {
+        animation-timing-function: ease-out;
+        stroke-dasharray: 87.96 307.87;
+        stroke-dashoffset: -131.94;
+    }
+
+    75% {
+        animation-timing-function: steps(1);
+        stroke-dasharray: 87.96 307.87;
+        stroke-dashoffset: 43.98;
+    }
+
+    75.01% {
+        animation-timing-function: ease-in;
+        stroke-dasharray: 43.98 307.87;
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dasharray: 43.98 307.87;
+        stroke-dashoffset: -131.94;
+    }
+}
+
 /*# sourceMappingURL=style.css.map */
+
+
+.insale-more-btn {
+    padding: 5px;
+    font-size: 14px;
+    width: 125px;
+    border-radius: 4px;
+    font-weight: normal;
+    overflow: hidden;
+    border: none;
+    color: #fff;
+    background: orangered;
+    position: relative;
+    padding-bottom: 2em;
+}
+
+.insale-more-btn > div, .insale-more-btn > svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.insale-more-btn:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    background: currentColor;
+    transition: transform 0.25s ease-out;
+}
+
+.insale-more-btn:hover:before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.insale-more-btn .clone > *, .insale-more-btn #text > * {
+    opacity: 1;
+    font-size: 1.1rem;
+    transition: 0.2s;
+    margin-left: 4px;
+}
+
+.insale-more-btn .clone > * {
+    transform: translateY(60px);
+}
+
+.insale-more-btn:hover .clone > * {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.insale-more-btn:hover #text > * {
+    opacity: 1;
+    transform: translateY(-60px);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.insale-more-btn:hover .clone > :nth-child(1) {
+    transition-delay: 0.15s;
+}
+
+.insale-more-btn:hover .clone > :nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.insale-more-btn:hover .clone > :nth-child(3) {
+    transition-delay: 0.25s;
+}
+
+.insale-more-btn:hover .clone > :nth-child(4) {
+    transition-delay: 0.3s;
+}
+
+/* icon style and hover */
+.insale-more-btn svg {
+    width: 20px;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%) rotate(135deg);
+    transition: 0.2s ease-out;
+}
+
+.insale-more-btn:hover svg {
+    transform: translateY(-50%) rotate(90deg);
+}

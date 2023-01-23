@@ -119,7 +119,9 @@
                                 <li>
                                     <div class="related-item">
                                         <div class="related-img">
-                                            <img src="/assets/images/@relatedProduct.MainPhoto" alt="@relatedProduct.Title" />
+                                            <a asp-action="details" asp-controller="product" asp-route-id="@relatedProduct.Id">
+                                                <img src="/assets/images/@relatedProduct.MainPhoto" alt="@relatedProduct.Title" />
+                                            </a>
                                         </div>
                                         <p style="overflow: hidden;text-align: left;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;"><strong>@relatedProduct.Brand.Title</strong>  @relatedProduct.Title</p>
                                         <span>@relatedProduct.Price$</span>

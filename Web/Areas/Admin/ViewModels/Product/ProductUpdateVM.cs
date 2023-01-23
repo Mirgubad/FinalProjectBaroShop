@@ -12,7 +12,7 @@ namespace Web.Areas.Admin.ViewModels.Product
         [MaxLength(100)]
         public string Title { get; set; }
         [Required]
-        [MaxLength(200)]
+        [MaxLength(1200)]
         public string Description { get; set; }
         [Required]
         public double Price { get; set; }

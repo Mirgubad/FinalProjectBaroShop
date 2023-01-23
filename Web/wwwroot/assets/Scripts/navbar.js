@@ -24,32 +24,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 $(document).ready(function () {
-  $(".has-dropdown").click(function () {
-    var id = $(this).data("id");
-    $(`.navbar-dropdown[id=${id}]`).toggle(200);
-  });
+    $(".has-dropdown").click(function () {
+        var id = $(this).data("id");
+        $(`.navbar-dropdown[id=${id}]`).toggle(200);
+    });
 
 
-  
-  $(".footer-title").click(function () {
-    var id = $(this).data("id");
-    $(`.collapsed-items[id=${id}]`).toggle(300);
-    $(this).toggleClass('show');
-    return false;
-  });
 
- 
+    $(".footer-title").click(function () {
+        var id = $(this).data("id");
+        $(`.collapsed-items[id=${id}]`).toggle(300);
+        $(this).toggleClass('show');
+        return false;
+    });
+
+
 });
 
 var $scrollingDiv = $("#to-top-btn");
 
 $(window).scroll(function () {
-  if ($(window).scrollTop() > 220) {
-    $scrollingDiv
-      .css("position", "fixed")
-      .css("bottom", "10px")
-      .css("right", "10px");
-  } else {
-    $scrollingDiv.css("position", "fixed").css("right", "-1000px");
-  }
+    if ($(window).scrollTop() > 220) {
+        $scrollingDiv
+            .css("position", "fixed")
+            .css("bottom", "10px")
+            .css("right", "10px");
+    } else {
+        $scrollingDiv.css("position", "fixed").css("right", "-1000px");
+    }
 });
+
+setTimeout(() => {
+    $(".loader-main").fadeOut(350);
+}, 3000);
+
+
+
+
+
+

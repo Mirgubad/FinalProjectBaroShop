@@ -83,7 +83,6 @@ $(document).on("click", '.basket-delete', function () {
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
 
-
     $.ajax({
         method: "POST",
         url: "/basket/delete",
@@ -122,7 +121,6 @@ $(document).on("click", '.mini-basket-delete', function () {
     var sumPrice = $('#mini-basket-sum-price').html()
     var sumPriceLast = $('#mini-basket-sum-price')
 
-
     $.ajax({
         method: "POST",
         url: "/basket/delete",
@@ -136,8 +134,6 @@ $(document).on("click", '.mini-basket-delete', function () {
             $(`.basket-products[id=${id}]`).remove();
             basketCount.html("")
             basketCount.append(sum)
-            //itemTotalCount.html("")
-            //itemTotalCount.append(sum + " items")
             sumPriceLast.html("")
             sumPriceLast.append(sumPrice - price * quantity)
             $(".notification-remove").fadeIn(1000);
@@ -160,6 +156,8 @@ $(document).on("click", '.decrease', function () {
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
     var sum = count * price
+    $(".loader-2").show();
+    $(".card-container").css("filter", "blur(1px)")
     $.ajax({
         method: "POST",
         url: "/basket/decreasecount",
@@ -173,7 +171,6 @@ $(document).on("click", '.decrease', function () {
                 itemTotalCount.html("")
                 itemTotalCount.append(basketCurrentCount + " items")
                 basketCount.append(basketCurrentCount)
-
             }
             if (sum > 0) {
                 total.html('')
@@ -184,7 +181,12 @@ $(document).on("click", '.decrease', function () {
             $(".notification-remove").fadeIn(1000);
             setTimeout(() => {
                 $(".notification-remove").fadeOut(3000);
+                $(".loader-2").hide();
+                $(".card-container").css("filter", "none")
             }, 2000);
+
+
+
 
         }
     })
@@ -203,6 +205,8 @@ $(document).on("click", '.increase', function () {
     var basketCurrentCount = $('#basketCount').html()
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
+    $(".loader-2").show();
+    $(".card-container").css("filter", "blur(1px)")
     $.ajax({
         method: "POST",
         url: "/basket/increasecount",
@@ -222,6 +226,8 @@ $(document).on("click", '.increase', function () {
             $(".notification-success").fadeIn(1000);
             setTimeout(() => {
                 $(".notification-success").fadeOut(3000);
+                $(".loader-2").hide();
+                $(".card-container").css("filter", "none")
             }, 2000);
         }
     })
@@ -250,6 +256,7 @@ $(document).on('click', '.product-heart', function () {
             setTimeout(() => {
                 $(".notification-error").fadeOut(3000);
             }, 2000);
+
         }
 
     })

@@ -12,7 +12,7 @@ namespace Web.ViewModels.Product
         public List<Model> Models { get; set; }
         public List<Material> Materials { get; set; }
         public int Page { get; set; } = 1;
-        public int Take { get; set; } = 9;
+        public int Take { get; set; } = 12;
         public int PageCount { get; set; }
         public string SearchInput { get; set; }
         public double MinPrice { get; set; }

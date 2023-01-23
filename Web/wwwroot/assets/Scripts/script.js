@@ -570,21 +570,40 @@ scrollEvents.run();
 
 
 
-    var skipRow = 1
+var skipRow = 1
 
-    $(document).on("click",'#more-btn', function () {
-        $.ajax({
-            method: "GET",
-            url: "/product/loadmore",
-            data: {
-                skipRow: skipRow
-            },
-            success: function (result) {
-                $('#best-selling-products').append(result);
-                skipRow++;
+$(document).on("click", '#more-btn', function () {
+    $.ajax({
+        method: "GET",
+        url: "/product/LoadMore",
+        data: {
+            skipRow: skipRow
+        },
+        success: function (result) {
+            $('#best-selling-products').append(result);
+            skipRow++;
 
-            }
-        })
+        }
     })
+})
+
+
+// skipRowSale = 1
+//$(document).on("click", '.insale-more-btn', function () {
+//    $.ajax({
+//        method: "GET",
+//        url: "/product/LoadMoreInSale",
+//        data: {
+//            skipRowSale: skipRowSale
+//        },
+//        success: function (result) {
+//            $('#insale-products').append(result);
+//            skipRowSale++;
+
+//        }
+//    })
+//})
+
+
 
 

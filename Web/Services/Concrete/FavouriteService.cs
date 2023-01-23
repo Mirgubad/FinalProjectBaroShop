@@ -52,35 +52,38 @@ namespace Web.Services.Concrete
 
         public async Task<List<FavouriteListItemVM>> GetAllAsync()
         {
-            var favourites = JsonConvert.DeserializeObject<List<FavouriteAddVM>>(_httpContextAccessor.HttpContext.Request.Cookies["favourite"]);
-
-            List<FavouriteListItemVM> model = new List<FavouriteListItemVM>();
-
-            foreach (var favourite in favourites)
+            List<FavouriteAddVM> favourites;
+            if (_httpContextAccessor.HttpContext.Request.Cookies["favourite"] != null)
             {
-                var dbitem = await _productRepository.GetProductDetailsAsync(favourite.Id);
-                if (dbitem != null)
-                {
-                    var size = await _sizeRepository.GetAllAsync();
-                    model.Add(new FavouriteListItemVM
-                    {
-                        Id = dbitem.Id,
-                        PhotoName = dbitem.MainPhoto,
-                        Price = dbitem.Price,
-                        ShippingStatus = dbitem.ShippingStatus,
-                        Sizes = size.Select(s => new SelectListItem
-                        {
-                            Text = s.Title,
-                            Value = s.Id.ToString(),
+                favourites = JsonConvert.DeserializeObject<List<FavouriteAddVM>>(_httpContextAccessor.HttpContext.Request.Cookies["favourite"]);
+                List<FavouriteListItemVM> model = new List<FavouriteListItemVM>();
 
-                        }).ToList(),
-                        Title = dbitem.Title
-                    });
+                foreach (var favourite in favourites)
+                {
+                    var dbitem = await _productRepository.GetProductDetailsAsync(favourite.Id);
+                    if (dbitem != null)
+                    {
+                        var size = await _sizeRepository.GetAllAsync();
+                        model.Add(new FavouriteListItemVM
+                        {
+                            Id = dbitem.Id,
+                            PhotoName = dbitem.MainPhoto,
+                            Price = dbitem.Price,
+                            ShippingStatus = dbitem.ShippingStatus,
+                            Sizes = size.Select(s => new SelectListItem
+                            {
+                                Text = s.Title,
+                                Value = s.Id.ToString(),
+
+                            }).ToList(),
+                            Title = dbitem.Title
+                        });
+                    }
                 }
 
+                return model;
             }
-
-            return model;
+            return null;
         }
 
         public async Task<bool> RemoveAsync(int id)

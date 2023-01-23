@@ -24,6 +24,8 @@ namespace DataAccess.Repositories.Concrete
         {
             var products = await _context.Products
               .Where(pr => pr.BestSelling == true)
+              .OrderByDescending(pr => pr.CreatedAt)
+              .Take(5)
               .ToListAsync();
             return products;
         }
@@ -32,6 +34,8 @@ namespace DataAccess.Repositories.Concrete
         {
             var products = await _context.Products
                 .Where(pr => pr.InSale == true)
+                .Take(5)
+                .OrderByDescending(pr => pr.CreatedAt)
                 .ToListAsync();
             return products;
         }
@@ -82,7 +86,8 @@ namespace DataAccess.Repositories.Concrete
             var relatedProducts = await _context.Products
                 .Include(pr => pr.Brand)
                 .Where(pr => ((int)pr.Model) == model && ((int)pr.Gender) == gender)
-                .Take(12).ToListAsync();
+                .Take(12)
+                .ToListAsync();
             return relatedProducts;
         }
 
@@ -100,10 +105,11 @@ namespace DataAccess.Repositories.Concrete
         public async Task<List<Product>> ProductsLoadMoreAsync(int skipRow)
         {
             var products = await _context.Products
+                .OrderByDescending(p => p.CreatedAt)
                 .Include(pr => pr.Brand)
-                .OrderByDescending(p => p.Id)
-                .Skip(4 * skipRow)
-                .Take(4)
+                .Where(pr => pr.BestSelling == true)
+                .Skip(5)
+                .Take(5)
                 .ToListAsync();
 
             return products;
@@ -112,7 +118,7 @@ namespace DataAccess.Repositories.Concrete
 
         public async Task<bool> CheckIsLastAsync(int skipRow)
         {
-            if (((skipRow + 1) * 4) + 1 >= _context.Products.Count())
+            if (((skipRow + 1) * 6) + 1 >= _context.Products.Count())
             {
                 return true;
             }

@@ -204,7 +204,6 @@
                 @{
                     foreach (var product in Model.BestSellingProducts)
                     {
-
                         <div class="best-selling-item">
                             <div class="best-sell-img">
                                 <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
@@ -221,35 +220,32 @@
                             <i data-id="@product.Id" class="fa fa-heart wish-list product-heart"
                            aria-hidden="true"></i>
                         </div>
-
                     }
-
                 }
-
-                <div class="load-more">
-                    <button id="more-btn">
-                        <div id="text">
-                            <span>Load</span>
-                            <span>more</span>
-                        </div>
-                        <div class="clone">
-                            <span>Load</span>
-                            <span>more</span>
-                        </div>
-                        <svg width="20px"
-                             xmlns="http://www.w3.org/2000/svg"
-                             class="h-6 w-6"
-                             fill="none"
-                             viewBox="0 0 24 24"
-                             stroke="currentColor"
-                             stroke-width="2">
-                            <path stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                    </button>
-                </div>
             </div>
+        </div>
+        <div class="load-more">
+            <button id="more-btn">
+                <div id="text">
+                    <span>Load</span>
+                    <span>more</span>
+                </div>
+                <div class="clone">
+                    <span>Load</span>
+                    <span>more</span>
+                </div>
+                <svg width="20px"
+                     xmlns="http://www.w3.org/2000/svg"
+                     class="h-6 w-6"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </button>
         </div>
     </div>
 </section>
@@ -277,7 +273,7 @@
     <div id="main-container">
         <h3>Sale</h3>
         <div id="container">
-            <div class="in-sale-items">
+            <div class="in-sale-items" id="insale-products">
                 @{
                     foreach (var inSaleProduct in Model.InSaleProducts)
                     {
@@ -301,114 +297,30 @@
 
                     }
                 }
-                @* <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>
-
-                <div class="in-sale-item">
-                <div class="in-sale-img">
-                <img src="/assets/product5.webp" alt="" />
-                </div>
-                <div class="item-info">
-                <p title="Blood pressure tester">Blood pressure tester</p>
-                <span>20.99$</span>
-                </div>
-                <i class="fa fa-heart wish-list product-heart"
-                aria-hidden="true"></i>
-                </div>*@
             </div>
+        </div>
+        <div class="load-more">
+            <button id="insale-more-btn" class="insale-more-btn">
+                <div id="text">
+                    <span>Load</span>
+                    <span>more</span>
+                </div>
+                <div class="clone">
+                    <span>Load</span>
+                    <span>more</span>
+                </div>
+                <svg width="20px"
+                     xmlns="http://www.w3.org/2000/svg"
+                     class="h-6 w-6"
+                     fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor"
+                     stroke-width="2">
+                    <path stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </button>
         </div>
     </div>
 </section>
@@ -488,79 +400,15 @@
                         </div>
                         <div class="author-quote">
                             <h4>@testimonial.Title</h4>
-                            <blockquote>
-                                <i class="fa fa-quote-left"></i> @testimonial.Description
+                            <blockquote class="font-weight:300">
+                                <i class="fa fa-quote-left"></i>
+                                @Html.Raw(testimonial.Description)
                                 <i class="fa fa-quote-right"></i>
                             </blockquote>
                         </div>
                     </div>
-
                 }
             }
-            @*  <div class="testimonial">
-            <div class="author-img">
-            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/4.jpg"
-            alt=""
-            class="img-fluid rounded" />
-            </div>
-            <div class="author-quote">
-            <h4>Maecenas varius finibus orci vel</h4>
-            <blockquote>
-            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-            vel dignissim. Nam posuere, magna pellentesque accumsan
-            tincidunt, libero lorem convallis lectus
-            <i class="fa fa-quote-right"></i>
-            </blockquote>
-            </div>
-            </div>
-            <div class="testimonial">
-            <div class="author-img">
-            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/3.jpg"
-            alt=""
-            class="img-fluid rounded" />
-            </div>
-            <div class="author-quote">
-            <h4>Maecenas varius finibus orci vel</h4>
-            <blockquote>
-            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-            vel dignissim. Nam posuere, magna pellentesque accumsan
-            tincidunt, libero lorem convallis lectus
-            <i class="fa fa-quote-right"></i>
-            </blockquote>
-            </div>
-            </div>
-            <div class="testimonial">
-            <div class="author-img">
-            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/2.jpg"
-            alt=""
-            class="img-fluid rounded" />
-            </div>
-            <div class="author-quote">
-            <h4>Maecenas varius finibus orci vel</h4>
-            <blockquote>
-            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-            vel dignissim. Nam posuere, magna pellentesque accumsan
-            tincidunt, libero lorem convallis lectus
-            <i class="fa fa-quote-right"></i>
-            </blockquote>
-            </div>
-            </div>
-            <div class="testimonial">
-            <div class="author-img">
-            <img src="https://srmahour.github.io/custom-testimonial-slider-and-blog/images/1.jpg"
-            alt=""
-            class="img-fluid rounded" />
-            </div>
-            <div class="author-quote">
-            <h4>Maecenas varius finibus orci vel</h4>
-            <blockquote>
-            <i class="fa fa-quote-left"></i> Maecenas varius finibus orci
-            vel dignissim. Nam posuere, magna pellentesque accumsan
-            tincidunt, libero lorem convallis lectus
-            <i class="fa fa-quote-right"></i>
-            </blockquote>
-            </div>
-            </div>*@
         </div>
     </div>
 </section>

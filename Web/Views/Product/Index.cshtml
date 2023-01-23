@@ -174,51 +174,51 @@
                     }
                 }
             </div>
+            <div id="pagination-container"></div>
             @{
-                if (Model.Products.Count <= Model.PageCount)
-                {
-                    <div class="paginate">
-                        <div class="pages">
-                            @{
-                                var prevPage = Model.Page - 1;
-                                if (1 < Model.Page)
-                                {
-                                    <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@prevPage">
-                                        <span class="page">
 
-                                            <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+                <div class="paginate">
+                    <div style="justify-content:center" class="pages">
+                        @{
+                            var prevPage = Model.Page - 1;
+                            if (1 < Model.Page)
+                            {
+                                <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@prevPage">
+                                    <span class="page">
 
-                                        </span>
-                                    </a>
-                                }
+                                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
 
-
-                                for (int i = 1; i <= Model.PageCount; i++)
-                                {
-                                    <a class="@(i==Model.Page?"page-num disabled":"page-num")" asp-action="index" asp-controller="product" asp-route-page="@i" asp-route-searchinput="@Model.SearchInput">
-                                        <span>@i</span>
-                                    </a>
-                                    //<span class="page-num">2</span>
-                                    //<span class="page-num">3</span>
-                                }
-
-                                var nextPage = Model.Page + 1;
-
-                                if (Model.Page != Model.PageCount)
-                                {
-                                    <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@nextPage">
-                                        <span class="page">
-                                            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-                                        </span>
-                                    </a>
-
-                                }
+                                    </span>
+                                </a>
                             }
 
 
-                        </div>
+                            for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <a class="@(i==Model.Page?"page-num disabled":"page-num")" asp-action="index" asp-controller="product" asp-route-page="@i" asp-route-searchinput="@Model.SearchInput">
+                                    <span>@i</span>
+                                </a>
+                                //<span class="page-num">2</span>
+                                //<span class="page-num">3</span>
+                            }
+
+                            var nextPage = Model.Page + 1;
+
+                            if (Model.Page != Model.PageCount)
+                            {
+                                <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@nextPage">
+                                    <span class="page">
+                                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                    </span>
+                                </a>
+
+                            }
+                        }
+
+
                     </div>
-                }
+                </div>
+
             }
 
         </div>
@@ -227,5 +227,7 @@
 
 @section Scripts{
     <script src="~/assets/Scripts/product.js"></script>
+    <script>
 
+    </script>
               }

@@ -89,14 +89,33 @@
                asp-controller="product" class="navbar-item">
                 PRODUCTS
             </a>
+            <a asp-action="index" asp-controller="favourite" class="burger-basket navbar-item">
+                WISH LIST
+            </a>
+            @{
+                if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-action="index" asp-controller="basket" class="burger-basket navbar-item">
+                        SHOPPING CART
+                    </a>
+                    <a asp-action="logout" asp-controller="account" class="burger-basket navbar-item">
+                        LOG OUT
+                    </a>
+                }
+                else
+                {
+                    <a asp-action="login" asp-controller="account" class="burger-basket navbar-item">
+                        LOGIN
+                    </a>
+                }
+            }
             <a asp-action="index" asp-controller="faq" class="navbar-item">
                 FAQ
             </a>
 
 
-            <a asp-action="index" asp-controller="basket" class="burger-basket navbar-item">
-                SHOPPING CART
-            </a>
+
+
 
             @* <div class="navbar-item has-dropdown is-hoverable" data-id="product">
             <a class="navbar-link">PRODUCTS </a>
