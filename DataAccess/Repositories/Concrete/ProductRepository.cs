@@ -78,14 +78,14 @@ namespace DataAccess.Repositories.Concrete
                 .Include(pr => pr.Colors)
                 .Include(pr => pr.Sizes)
                 .Include(pr => pr.Brand)
-                .Where(d => !string.IsNullOrEmpty(name) ? d.Title.Contains(name) : true);
+                .Where(pr => !string.IsNullOrEmpty(name) ? pr.Title.Contains(name) : true);
         }
 
-        public async Task<List<Product>> GetRelatedProductsAsync(int model, int gender)
+        public async Task<List<Product>> GetRelatedProductsAsync(int productId, int model, int gender)
         {
             var relatedProducts = await _context.Products
                 .Include(pr => pr.Brand)
-                .Where(pr => ((int)pr.Model) == model && ((int)pr.Gender) == gender)
+                .Where(pr => ((int)pr.Model) == model && ((int)pr.Gender) == gender && productId != pr.Id)
                 .Take(12)
                 .ToListAsync();
             return relatedProducts;

@@ -18,7 +18,7 @@ namespace DataAccess.Repositories.Abstarct
         Task<IQueryable<Product>> PaginateProductAsync(IQueryable<Product> products, int page, int take);
         Task<int> GetPageCountAsync(IQueryable<Product> products, int take);
         Task<IQueryable<Product>> FilterByName(string? name);
-        Task<List<Product>> GetRelatedProductsAsync(int model, int gender);
+        Task<List<Product>> GetRelatedProductsAsync(int productId, int model, int gender);
 
         Task<Product> GetUpdateModelAsync(int id);
 

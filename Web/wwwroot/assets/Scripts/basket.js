@@ -29,8 +29,6 @@ $(document).ready(function () {
                 }, 2000);
             }
         })
-
-
     });
 });
 
@@ -156,6 +154,8 @@ $(document).on("click", '.decrease', function () {
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
     var sum = count * price
+
+    sumPrice = parseFloat(sumPrice)
     $(".loader-2").show();
     $(".card-container").css("filter", "blur(1px)")
     $.ajax({
@@ -205,6 +205,7 @@ $(document).on("click", '.increase', function () {
     var basketCurrentCount = $('#basketCount').html()
     var sumPrice = $('#sum-price').html()
     var sumPriceLast = $('#sum-price')
+    sumPrice = parseFloat(sumPrice)
     $(".loader-2").show();
     $(".card-container").css("filter", "blur(1px)")
     $.ajax({
@@ -236,7 +237,9 @@ $(document).on("click", '.increase', function () {
 
 $(document).on('click', '.product-heart', function () {
     var id = $(this).data('id');
-
+    //$(this).removeClass("product-heart")
+    $(this).addClass("active")
+   
     $.ajax({
         method: "POST",
         url: "https://localhost:44386/favourite/add",
@@ -244,8 +247,6 @@ $(document).on('click', '.product-heart', function () {
             id: id
         },
         success: function (result) {
-            $(this).css("color", "red")
-            $(this).css("background", "white")
             $(".notification-success").fadeIn(1000);
             setTimeout(() => {
                 $(".notification-success").fadeOut(3000);
@@ -256,9 +257,7 @@ $(document).on('click', '.product-heart', function () {
             setTimeout(() => {
                 $(".notification-error").fadeOut(3000);
             }, 2000);
-
         }
-
     })
 })
 

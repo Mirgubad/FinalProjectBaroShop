@@ -63,6 +63,7 @@ namespace Web.Services.Concrete
                     ProductId = product.Id,
                     Quantity = 1,
                     CreatedAt = DateTime.Now,
+                 
                 };
                 await _basketProductRepository.CreateAsync(basketProduct);
             }

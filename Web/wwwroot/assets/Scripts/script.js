@@ -569,10 +569,9 @@ const scrollEvents = new ScrollEvents();
 scrollEvents.run();
 
 
-
 var skipRow = 1
 
-$(document).on("click", '#more-btn', function () {
+$(document).on("click",'#more-btn', function () {
     $.ajax({
         method: "GET",
         url: "/product/LoadMore",

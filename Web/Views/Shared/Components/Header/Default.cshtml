@@ -7,7 +7,7 @@
     <div class="notification-container">
         <div class="notification-success">
             <i class="fa fa-check-circle" aria-hidden="true"></i>
-            <a>Successfully Added</a>
+            <a>Added Successfully</a>
         </div>
 
         <div class="notification-login-success">
@@ -27,131 +27,118 @@
     </div>
 </div>
 <!-- Notification End-->
-<div id="header">
-    <a asp-action="index" asp-controller="home"> <img src="/assets/logo.png" alt="" /></a>
-    <div class="search">
-        <input type="search" />
-        <i class="fa fa-search search-icon" aria-hidden="true"></i>
-    </div>
-    <div class="nav-head">
-        @{
-            if (!Context.User.Identity.IsAuthenticated)
-            {
-                <a asp-action="login" asp-controller="account"><i class="fa fa-user icon" aria-hidden="true"></i>Login</a>
-            }
-            else
-            {
-                <a title="@Context.User.Identity.Name" asp-action="logout" asp-controller="account"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
-            }
-        }
-        <a asp-action="index" asp-controller="favourite"><i class="fa-regular fa-heart icon"></i>Favourites</a>
+<div id="navbars">
 
-        @{
-            if (Context.User.Identity.IsAuthenticated)
-            {
-                <a id="basket">
-                    <i class="fa fa-shopping-cart icon" aria-hidden="true"></i>Basket
-                </a>
-                if (Model.Count > 0)
-                {
-                    <div id="basket-count"><span id="basketCount">@Model.Count</span></div>
-                }
-            }
-        }
-    </div>
-</div>
-<nav class="navbars" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <a asp-action="index" asp-controller="home">
-            <img class="navbar-brand-logo" src="/assets/logo.png" alt="" />
-        </a>
+    <div id="header">
+        <a asp-action="index" asp-controller="home"> <img id="logo-icon" src="/assets/logo.png" alt="" /></a>
+        <div class="search">
+            <input id="search-input" asp-for="@Model.SearchInput" placeholder="Type something to search " />
+            <i class="fa fa-search search-icon" id="search" aria-hidden="true"></i>
+            <div id="search-result" class="scroll">
+            </div>
+        </div>
 
-        <a role="button"
-           class="navbar-burger burger"
-           aria-label="menu"
-           aria-expanded="false"
-           data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </a>
-    </div>
-
-    <div id="navbarBasicExample"
-         style="width: 100% !important"
-         class="navbar-menu">
-        <div class="navbar-end">
-            <a asp-action="index"
-               asp-controller="home" class="navbar-item">
-                HOME
-            </a>
-            <a asp-action="index"
-               asp-controller="product" class="navbar-item">
-                PRODUCTS
-            </a>
-            <a asp-action="index" asp-controller="favourite" class="burger-basket navbar-item">
-                WISH LIST
-            </a>
+        <div class="nav-head">
             @{
-                if (User.Identity.IsAuthenticated)
+                if (!Context.User.Identity.IsAuthenticated)
                 {
-                    <a asp-action="index" asp-controller="basket" class="burger-basket navbar-item">
-                        SHOPPING CART
-                    </a>
-                    <a asp-action="logout" asp-controller="account" class="burger-basket navbar-item">
-                        LOG OUT
-                    </a>
+                    <a asp-action="login" asp-controller="account"><i class="fa fa-user icon" aria-hidden="true"></i>Login</a>
                 }
                 else
                 {
-                    <a asp-action="login" asp-controller="account" class="burger-basket navbar-item">
-                        LOGIN
-                    </a>
+                    <a title="@Context.User.Identity.Name" asp-action="logout" asp-controller="account"><i class="fa fa-sign-out mx-2" aria-hidden="true"></i>Log Out</a>
                 }
             }
-            <a asp-action="index" asp-controller="faq" class="navbar-item">
-                FAQ
-            </a>
+            <a asp-action="index" asp-controller="favourite"><i class="fa-regular fa-heart icon"></i>Favourites</a>
 
-
-
-
-
-            @* <div class="navbar-item has-dropdown is-hoverable" data-id="product">
-            <a class="navbar-link">PRODUCTS </a>
-            <div class="navbar-dropdown" id="product">
-            <a asp-action="index"
-            asp-controller="product"
-            target="_blank"
-            class="navbar-item">
-            MEN
-            </a>
-            <a href="#" target="_blank" class="navbar-item"> WOMEN </a>
-            <a href="#" target="_blank" class="navbar-item"> CHILD </a>
-            </div>
-            </div>*@
-
-            <div class="navbar-item has-dropdown is-hoverable" data-id="about">
-                <a class="navbar-link"> ABOUT US </a>
-                <div class="navbar-dropdown" id="about">
-                    <a asp-action="index" asp-controller="about" asp-fragment="whoweare"
-                       target="_blank"
-                       class="navbar-item">
-                        WHO WE ARE
+            @{
+                if (Context.User.Identity.IsAuthenticated)
+                {
+                    <a id="basket">
+                        <i class="fa fa-shopping-cart icon" aria-hidden="true"></i>Basket
                     </a>
-                    <a asp-action="index" asp-controller="about" asp-fragment="whatwedo"
-                       target="_blank"
-                       class="navbar-item">
-                        WHAT WE DO
-                    </a>
-                    <a asp-action="index" asp-controller="about" asp-fragment="contact-info"
-                       target="_blank"
-                       class="navbar-item">CONTACT</a>
-                </div>
-            </div>
-
-
-
+                    if (Model.Count > 0)
+                    {
+                        <div id="basket-count"><span id="basketCount">@Model.Count</span></div>
+                    }
+                }
+            }
         </div>
     </div>
-</nav>
+    <nav class="navbars" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a asp-action="index" asp-controller="home">
+                <img class="navbar-brand-logo" src="/assets/logo.png" alt="" />
+            </a>
+            <a role="button"
+               class="navbar-burger burger"
+               aria-label="menu"
+               aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample"
+             style="width: 100% !important"
+             class="navbar-menu">
+            <div class="navbar-end">
+                <a asp-action="index"
+                   asp-controller="home" class="navbar-item">
+                    HOME
+                </a>
+                <a asp-action="index"
+                   asp-controller="product" class="navbar-item">
+                    PRODUCTS
+                </a>
+                <a asp-action="index" asp-controller="favourite" class="burger-basket navbar-item">
+                    WISH LIST
+                </a>
+                @{
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="index" asp-controller="basket" class="burger-basket navbar-item">
+                            SHOPPING CART
+                        </a>
+                        <a asp-action="logout" asp-controller="account" class="burger-basket navbar-item">
+                            LOG OUT
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="login" asp-controller="account" class="burger-basket navbar-item">
+                            LOGIN
+                        </a>
+                    }
+                }
+                <a asp-action="index" asp-controller="faq" class="navbar-item">
+                    FAQ
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable" data-id="about">
+                    <a class="navbar-link"> ABOUT US </a>
+                    <div class="navbar-dropdown" id="about">
+                        <a asp-action="index" asp-controller="about" asp-fragment="whoweare"
+                           target="_blank"
+                           class="navbar-item">
+                            WHO WE ARE
+                        </a>
+                        <a asp-action="index" asp-controller="about" asp-fragment="whatwedo"
+                           target="_blank"
+                           class="navbar-item">
+                            WHAT WE DO
+                        </a>
+                        <a asp-action="index" asp-controller="about" asp-fragment="contact-info"
+                           target="_blank"
+                           class="navbar-item">CONTACT</a>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </nav>
+</div>

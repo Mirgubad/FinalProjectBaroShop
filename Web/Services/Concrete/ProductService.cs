@@ -3,6 +3,7 @@ using Core.Entities;
 using DataAccess.Repositories.Abstarct;
 using Org.BouncyCastle.Asn1.CryptoPro;
 using Web.Services.Abstract;
+using Web.ViewModels.Components;
 using Web.ViewModels.Product;
 
 namespace Web.Services.Concrete
@@ -22,7 +23,15 @@ namespace Web.Services.Concrete
             _colorRepository = colorRepository;
         }
 
-
+        public async Task<HeaderComponentVM> FilterByName(string? name)
+        {
+            var products = await _productRepository.FilterByName(name);
+            var model = new HeaderComponentVM
+            {
+                Products = products.ToList()
+            };
+            return model;
+        }
 
         public async Task<ProductIndexVM> GetAllAsync(ProductIndexVM model)
         {
@@ -50,7 +59,7 @@ namespace Web.Services.Concrete
             var model = new ProductDetailsVM
             {
                 Product = product,
-                RelatedProducts = await _productRepository.GetRelatedProductsAsync(((int)product.Model), ((int)product.Gender))
+                RelatedProducts = await _productRepository.GetRelatedProductsAsync(id, ((int)product.Model), ((int)product.Gender))
             };
             return model;
         }
@@ -62,6 +71,26 @@ namespace Web.Services.Concrete
             {
                 BestSellingProducts = products,
                 IsLast = await _productRepository.CheckIsLastAsync(skipRow)
+            };
+            return model;
+        }
+
+        public async Task<ProductIndexVM> GetProductsWithPaginate(int page)
+        {
+            var model =new ProductIndexVM();
+            var products = await _productRepository.FilterByName(model.SearchInput);
+            var pageCount = await _productRepository.GetPageCountAsync(products, model.Take);
+            products = await _productRepository.PaginateProductAsync(products, page, model.Take);
+
+            model = new ProductIndexVM
+            {
+                Products = products.OrderByDescending(pr => pr.CreatedAt).ToList(),
+                Brands = await _brandRepository.GetAllAsync(),
+                Colors = await _colorRepository.GetAllAsync(),
+                Page = page,
+                PageCount = pageCount,
+                Take = model.Take,
+                SearchInput = model.SearchInput,
             };
             return model;
         }

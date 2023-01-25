@@ -1,5 +1,6 @@
 ﻿using Core.Entities;
 using Core.Utilities.Attributes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
@@ -68,13 +69,13 @@ namespace Web.Controllers
 
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVM)
         {
             var userIsExist = await _accountService.ForgotPasswordFindUserAsync(forgotPasswordVM);
             if (!userIsExist) return View(forgotPasswordVM);
             string link = Url.Action(nameof(ResetPassword), "Account", new { userId = forgotPasswordVM.Id, forgotPasswordVM.Token },
-             Request.Scheme, Request.Host.ToString());
+             Request.Scheme);
             await _accountService.ResetPasswordTokenAsync(link, forgotPasswordVM);
 
             return RedirectToAction(nameof(VerifyEmail));

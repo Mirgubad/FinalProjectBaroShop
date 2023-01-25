@@ -132,14 +132,14 @@
             </div>
         </aside>
 
-        <div style="margin-bottom:80px" class="product-center">
+        <div style="margin-bottom:80px" class="product-center" id="products">
             <div class="products">
                 @{
                     foreach (var product in Model.Products)
                     {
                         <div class="product-item" data-id="@product.Id">
                             <a asp-action="details" asp-controller="product" asp-route-id="@product.Id">
-                                <div class="product-img">
+                                <div class="product-img card-img skeleton">
                                     <img src="/assets/images/@product.MainPhoto" alt="@product.Title" />
                                 </div>
                             </a>
@@ -172,54 +172,52 @@
                             </div>
                         </div>
                     }
+                    <div class="paginate">
+                        <div style="justify-content:center" class="pages">
+                            @{
+                                var prevPage = Model.Page - 1;
+                                if (1 < Model.Page)
+                                {@*asp-action="index" asp-controller="product" data-page="@prevPage"*@
+                                    <a style="color:black">
+                                        <span class="page">
+
+                                            <i class="fa fa-chevron-circle-left changepage" data-page="@prevPage" aria-hidden="true"></i>
+
+                                        </span>
+                                    </a>
+                                }
+
+
+                                for (int i = 1; i <= Model.PageCount; i++)
+                                {@*asp-action="index" asp-controller="product" asp-route-page="@i" asp-route-searchinput="@Model.SearchInput"*@
+                                    <a class="@(i==Model.Page?"page-num changepage  disabled":"changepage  page-num")" data-page="@i">
+                                        <span>@i</span>
+                                    </a>
+
+                                    //<span class="@(i==Model.Page?"page-num changepage disabled":"changepage page-num")" data-page="@i" asp-route-searchinput="@Model.SearchInput">
+                                    //    <span>@i</span>
+                                    //</span>
+
+                                    //<span class="page-num">2</span>
+                                    //<span class="page-num">3</span>
+                                }
+
+                                var nextPage = Model.Page + 1;
+
+                                if (Model.Page != Model.PageCount)
+                                { @*asp-action="index" asp-controller="product" asp-route-page="@nextPage"*@
+                                    <a style="color:black">
+                                        <span class="page">
+                                            <i class="fa fa-chevron-circle-right changepage" data-page="@nextPage" aria-hidden="true"></i>
+                                        </span>
+                                    </a>
+                                }
+                            }
+
+                        </div>
+                    </div>
                 }
             </div>
-            <div id="pagination-container"></div>
-            @{
-
-                <div class="paginate">
-                    <div style="justify-content:center" class="pages">
-                        @{
-                            var prevPage = Model.Page - 1;
-                            if (1 < Model.Page)
-                            {
-                                <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@prevPage">
-                                    <span class="page">
-
-                                        <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
-
-                                    </span>
-                                </a>
-                            }
-
-
-                            for (int i = 1; i <= Model.PageCount; i++)
-                            {
-                                <a class="@(i==Model.Page?"page-num disabled":"page-num")" asp-action="index" asp-controller="product" asp-route-page="@i" asp-route-searchinput="@Model.SearchInput">
-                                    <span>@i</span>
-                                </a>
-                                //<span class="page-num">2</span>
-                                //<span class="page-num">3</span>
-                            }
-
-                            var nextPage = Model.Page + 1;
-
-                            if (Model.Page != Model.PageCount)
-                            {
-                                <a style="color:black" asp-action="index" asp-controller="product" asp-route-page="@nextPage">
-                                    <span class="page">
-                                        <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-                                    </span>
-                                </a>
-
-                            }
-                        }
-
-
-                    </div>
-                </div>
-
-            }
 
         </div>
     </div>

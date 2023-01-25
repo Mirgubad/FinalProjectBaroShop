@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Org.BouncyCastle.Asn1.Ocsp;
 using System.Security.Claims;
 using System.Security.Policy;
+using System.Text.RegularExpressions;
 using Web.Services.Abstract;
 using Web.ViewModels.Account;
 
@@ -100,11 +101,18 @@ namespace Web.Services.Concrete
                 return false;
             }
 
-
             var existUser = await _userManager.FindByIdAsync(resetPasswordVM.Id);
             if (existUser == null)
             {
                 _modelState.AddModelError("Password", "User cannot found");
+                return false;
+            }
+
+            Regex validateGuidRegex = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+            var checkedPassword = validateGuidRegex.IsMatch(resetPasswordVM.Password);
+            if (!checkedPassword)
+            {
+                _modelState.AddModelError("Password", "Password was weak");
                 return false;
             }
 
@@ -113,6 +121,7 @@ namespace Web.Services.Concrete
                 _modelState.AddModelError("Password", "New password cant be same with old password");
                 return false;
             }
+
             await _userManager.ResetPasswordAsync(existUser, resetPasswordVM.Token, resetPasswordVM.Password);
             return true;
         }
@@ -133,15 +142,11 @@ namespace Web.Services.Concrete
                 Id = userExist.Id,
             };
 
-
-
             string token = await _userManager.GeneratePasswordResetTokenAsync(userExist);
-
             forgotPasswordVM.Token = token;
             forgotPasswordVM.Id = userExist.Id;
 
             return true;
-
         }
 
         public async Task<bool> LoginAsync(AccountLoginVM model)
