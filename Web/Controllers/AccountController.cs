@@ -62,6 +62,7 @@ namespace Web.Controllers
         }
 
         [HttpGet]
+        [OnlyAnonimous]
         public IActionResult ForgotPassword()
         {
             return View();
@@ -69,7 +70,6 @@ namespace Web.Controllers
 
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVM forgotPasswordVM)
         {
             var userIsExist = await _accountService.ForgotPasswordFindUserAsync(forgotPasswordVM);
@@ -81,6 +81,7 @@ namespace Web.Controllers
             return RedirectToAction(nameof(VerifyEmail));
         }
         [HttpGet]
+        [OnlyAnonimous]
         public IActionResult ResetPassword(string userId, string token) => View(new ResetPasswordVM { Token = token, Id = userId });
 
 
@@ -90,7 +91,6 @@ namespace Web.Controllers
             var isSucceded = await _accountService.ResetPasswordAsync(resetPasswordVM);
             if (isSucceded) return RedirectToAction(nameof(Login));
             return View(resetPasswordVM);
-
         }
 
 

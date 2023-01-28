@@ -1,5 +1,7 @@
 
 
+// Basket Start
+
 $(document).ready(function () {
     $("#close-basket-btn").click(function () {
         $(".mini-cart").hide(300);
@@ -33,26 +35,6 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    $(".wish-delete").click(function () {
-        var id = $(this).data("id")
-
-        $.ajax({
-            method: "POST",
-            url: "favourite/delete",
-            data: {
-                id: id
-            },
-            success: function (result) {
-                $(`.wish-item[id=${id}]`).remove()
-                $(".notification-remove").fadeIn(1000);
-                setTimeout(() => {
-                    $(".notification-remove").fadeOut(3000);
-                }, 2000);
-            }
-        })
-    })
-})
 
 
 
@@ -234,12 +216,18 @@ $(document).on("click", '.increase', function () {
     })
 })
 
+// Basket end //
+
+
+
+
+// Wish List  Start 
 
 $(document).on('click', '.product-heart', function () {
     var id = $(this).data('id');
     //$(this).removeClass("product-heart")
-    $(this).addClass("active")
-   
+
+
     $.ajax({
         method: "POST",
         url: "https://localhost:44386/favourite/add",
@@ -247,6 +235,7 @@ $(document).on('click', '.product-heart', function () {
             id: id
         },
         success: function (result) {
+            $(this).addClass("active")
             $(".notification-success").fadeIn(1000);
             setTimeout(() => {
                 $(".notification-success").fadeOut(3000);
@@ -260,5 +249,29 @@ $(document).on('click', '.product-heart', function () {
         }
     })
 })
+
+$(document).ready(function () {
+    $(".wish-delete").click(function () {
+        var id = $(this).data("id")
+
+        $.ajax({
+            method: "POST",
+            url: "favourite/delete",
+            data: {
+                id: id
+            },
+            success: function (result) {
+                $(`.wish-item[id=${id}]`).remove()
+                $(".notification-remove").fadeIn(1000);
+                setTimeout(() => {
+                    $(".notification-remove").fadeOut(3000);
+                }, 2000);
+            }
+        })
+    })
+})
+
+
+// Wish List End //
 
 

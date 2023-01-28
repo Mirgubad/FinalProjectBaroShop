@@ -47,15 +47,74 @@ $(document).on("mouseleave", ".product-item", function () {
 });
 
 
+//let checkboxes = document.querySelectorAll(".gender");
+
+//for (let i = 0; i < checkboxes.length; i++) {
+//    checkboxes[i].addEventListener("change", function () {
+//        if (this.checked) {
+//            var gender = $(this).data('gender')
+//            console.log(gender)
+//        }
+//    });
+//}
+
+
+//$("input[name='genderCheck']").change(function () {
+//    // Get the current state of the checkboxes
+//    var filter = $("input[name='genderCheck']:checked").map(function () {
+//        return this.value;
+//    }).get();
+//    var genders = 0
+//    var filtered = filter.map(function (gender) {
+//        genders = gender
+//    })
+//    $.ajax({
+//        url: "/product/filterproducts",
+//        data: { genders: genders },
+//        success: function (result) {
+//            $("#products").html(result);
+//            $("#MinPrice").val('');
+//            $("#MaxPrice").val('');
+
+//        }
+//    });
+
+//});
+
+//$("input[name='modelCheck']").change(function () {
+//    // Get the current state of the checkboxes
+//    var filter = $("input[name='modelCheck']:checked").map(function () {
+//        return this.value;
+//    }).get();
+//    var models = 0
+//    var filtered = filter.map(function (model) {
+//        models = model
+//    })
+//    $.ajax({
+//        url: "/product/filterproducts",
+//        data: { models: models },
+//        success: function (result) {
+//            $("#products").html(result);
+//        }
+//    });
+
+//});
+
+
+
+
+
 
 $(document).on('click', '.changepage', function (e) {
     var pageNumber = $(this).data('page')
-
     $(".loader-2").show()
     $.ajax({
         type: "GET",
         url: "/product/GetProductsPaginate",
-        data: { pageNumber: pageNumber },
+        data: {
+            pageNumber: pageNumber,
+
+        },
         success: function (data) {
             $(".loader-2").hide(200);
             $("#products").html(data);
@@ -70,3 +129,7 @@ setTimeout(() => {
 }, 1000)
 
 
+
+//$("#filterResetbtn").click(function () {
+//    document.getElementById("filter").reset();
+//})

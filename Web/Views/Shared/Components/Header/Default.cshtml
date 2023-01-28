@@ -62,8 +62,17 @@
                         <div id="basket-count"><span id="basketCount">@Model.Count</span></div>
                     }
                 }
+
+                if (User.IsInRole("Admin"))
+                {
+                    
+                        <a class="ml-3" title="Go To Dashboard" asp-action="index" asp-area="admin" asp-controller="dashboard"><i class="fa fa-2x fa-user-secret" aria-hidden="true"></i></a>
+                    
+                }
             }
+
         </div>
+
     </div>
     <nav class="navbars" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">

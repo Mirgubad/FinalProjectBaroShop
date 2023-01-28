@@ -447,7 +447,7 @@ a.has-text-centered.button.is-large.is-rounded {
     width: 205px;
     display: flex;
     flex-direction: column;
-    z-index: 9999;
+    z-index: 999999;
     gap: 10px;
 }
 
@@ -2187,6 +2187,7 @@ p {
     width: 80%;
     margin: 0 auto;
     margin-top: 50px;
+    margin-bottom: 30px;
 }
 
     .product-container .categories {
@@ -2194,7 +2195,7 @@ p {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
-        height: 100vh;
+        height: 100%;
     }
 
     .product-container .category-title {
@@ -2271,14 +2272,42 @@ input::-webkit-inner-spin-button {
 }
 
 .search-filter {
-    width: 40px;
-    background: #fb542b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    cursor: pointer;
+    width: 200px;
+    margin-top:20px;
+    display:flex;
 }
+
+    .search-filter #searchbtn {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #04021f;
+        border: none;
+        margin-left: 10px;
+    }
+
+    .search-filter #filterResetbtn {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #04021f;
+        border: none;
+        margin:0;
+        margin-left: 10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+
+    }
+
+    .search-filter #filterResetbtn i{
+        color:white !important;
+        font-size:16px;
+    }
 
 .product-inner {
     display: flex;
@@ -2413,7 +2442,7 @@ input::-webkit-inner-spin-button {
 
 .paginate {
     padding: 50px 0 50px 0;
-    width: 35%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -2533,7 +2562,7 @@ input::-webkit-inner-spin-button {
     background: orangered !important;
 }
 
-input[type=checkbox]:checked + .product-color {
+input[type=radio]:checked + .product-color {
     border: 1px solid saddlebrown !important;
 }
 

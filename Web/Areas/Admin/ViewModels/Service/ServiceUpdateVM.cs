@@ -9,7 +9,7 @@ namespace Web.Areas.Admin.ViewModels.Service
         public string Title { get; set; }
         [Required, MaxLength(30)]
         public string SubTitle { get; set; }
-        [Required]
+        [Required, MaxLength(50)]
         public string Description { get; set; }
         public IFormFile? Photo { get; set; }
     }
