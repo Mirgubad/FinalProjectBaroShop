@@ -49,7 +49,7 @@ namespace DataAccess.Repositories.Concrete
         public async Task<List<Product>> GetAllWithBrandAsync()
         {
             var product = await _context.Products
-                .OrderByDescending(pr=>pr.CreatedAt)
+                .OrderByDescending(pr => pr.CreatedAt)
                 .Include(br => br.Brand).ToListAsync();
             return product;
         }
@@ -86,7 +86,7 @@ namespace DataAccess.Repositories.Concrete
                 .Include(pr => pr.Colors)
                 .Include(pr => pr.Sizes)
                 .Include(pr => pr.Brand)
-                .Where(pr => !string.IsNullOrEmpty(name) ? pr.Title.Contains(name) : true);
+                .Where(pr => !string.IsNullOrEmpty(name) ? pr.Title.ToLower().Contains(name.ToLower()) : true);
         }
 
         public async Task<List<Product>> GetRelatedProductsAsync(int productId, int model, int gender)
@@ -190,8 +190,8 @@ namespace DataAccess.Repositories.Concrete
         {
             if (colorId != 0)
             {
-            var a = products.Where(m => m.Colors.Any(r => colorId == r.ColorId));
-            return a;
+                var a = products.Where(m => m.Colors.Any(r => colorId == r.ColorId));
+                return a;
 
             }
             return products;

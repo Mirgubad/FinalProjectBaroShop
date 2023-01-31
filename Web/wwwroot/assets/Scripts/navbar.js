@@ -23,19 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-$(document).ready(function () {
-    $(".has-dropdown").click(function () {
-        var id = $(this).data("id");
-        $(`.navbar-dropdown[id=${id}]`).toggle(200);
-    });
-
-    $(".footer-title").click(function () {
-        var id = $(this).data("id");
-        $(`.collapsed-items[id=${id}]`).toggle(300);
-        $(this).toggleClass('show');
-        return false;
-    });
-});
 
 var $scrollingDiv = $("#to-top-btn");
 var header = $("#header")
@@ -45,13 +32,14 @@ $(window).scroll(function () {
     if ($(window).scrollTop() > 220) {
         $scrollingDiv
             .css("position", "fixed")
-            .css("bottom", "10px")
-            .css("right", "10px");
+            .css("bottom", "30px")
+            .css("right", "30px")
+            .css("z-index", "99999")
         header.addClass("scrolled")
 
 
     } else {
-        $scrollingDiv.css("position", "fixed").css("right", "-1000px");
+        $scrollingDiv.css("position", "fixed").css("z-index", "-1");
         header.removeClass("scrolled")
     }
 });
@@ -72,6 +60,8 @@ $(document).ready(function () {
     $(".has-dropdown").click(function () {
         var id = $(this).data("id");
         $(`.navbar-dropdown[id=${id}]`).toggle(200);
+        $(this).toggleClass('show');
+
     });
     $(".footer-title").click(function () {
         var id = $(this).data("id");
@@ -82,19 +72,26 @@ $(document).ready(function () {
 });
 
 
+$("#search").click(function () {
+    $(this).removeClass("fa-close close-search-btn")
+    $(this).addClass("fa-search")
+    $("#search-result").hide(200)
+    $("#search-input").val('')
+})
+
 
 $(document).ready(function () {
     $("#search-input").keypress(function () {
-        //$(this).css("border", "1.5px solid orangered")
+        $(this).css("border", "1.5px solid orangered")
         var addResult = $("#search-result")
         addResult.show(300)
-        $("body").click(function () {
-            addResult.hide(300)
-        })
+        $("#search").addClass("fa-close close-search-btn")
+        $("#search").removeClass("fa-search")
+
         var name = $("#search-input").val()
         $.ajax({
             method: "GET",
-            url: "product/filterbyname",
+            url: "https://localhost:44386/product/filterbyname",
             data: {
                 name: name
             },
@@ -102,7 +99,6 @@ $(document).ready(function () {
                 addResult.html('')
                 addResult.css("height", "300px")
                 addResult.append(result)
-                console.log(result)
                 if (result == false) {
                     addResult.css("height", "100px")
                     addResult.append(`

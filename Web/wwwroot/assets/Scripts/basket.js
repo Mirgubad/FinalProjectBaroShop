@@ -5,19 +5,32 @@
 $(document).ready(function () {
     $("#close-basket-btn").click(function () {
         $(".mini-cart").hide(300);
+        $(".wrapper").css({ "filter": "none" });
+        $("html").css({
+            "overflow": "auto",
+        });
     });
+
+    //$("body").click(function () {
+    //    $(".mini-cart").hide(300);
+    //    $(".wrapper").css({ "filter": "none" });
+    //    $("html").css({
+    //        "overflow": "auto",
+    //    });
+    //})
+
+
 });
 
 
 $(document).ready(function () {
     $(".add-basket-btn").click(function () {
-
         var id = $(this).data('id')
         var basketCount = $('#basketCount')
         var basketCurrentCount = $('#basketCount').html()
         $.ajax({
             method: "POST",
-            url: "/basket/add",
+            url: "https://localhost:44386/basket/add",
             data: {
                 id: id
             },
@@ -38,8 +51,19 @@ $(document).ready(function () {
 
 
 
+$("html").css("overflow", "auto")
 $(document).on("click", "#basket", function () {
-    $(".mini-cart").toggle(300);
+    $(".mini-cart").toggle(300, function () {
+        if (!$(".mini-cart").is(":visible")) {
+            $("html").css({
+                "overflow": "auto",
+            });
+            $(".wrapper").css({ "filter": "none" });
+        } else {
+            $("html").css({ "overflow": "hidden" });
+            $(".wrapper").css({ "filter": "blur(1px)" });
+        }
+    });
     $.ajax({
         method: "GET",
         url: "/basket/minibasket",
@@ -89,40 +113,40 @@ $(document).on("click", '.basket-delete', function () {
 })
 
 
-$(document).on("click", '.mini-basket-delete', function () {
-    var id = $(this).data('id')
-    var basketCountContainer = $("#basket-count")
-    var basketCount = $('#basketCount')
-    var basketCurrentCount = $('#basketCount').html()
-    var quantity = $(this).data('quantity')
-    var sum = basketCurrentCount - quantity
-    var itemTotalCount = $('#mini-basket-item-count')
-    var price = $(this).data('price')
-    var sumPrice = $('#mini-basket-sum-price').html()
-    var sumPriceLast = $('#mini-basket-sum-price')
+//$(document).on("click", '.mini-basket-delete', function () {
+//    var id = $(this).data('id')
+//    var basketCountContainer = $("#basket-count")
+//    var basketCount = $('#basketCount')
+//    var basketCurrentCount = $('#basketCount').html()
+//    var quantity = $(this).data('quantity')
+//    var sum = basketCurrentCount - quantity
+//    var itemTotalCount = $('#mini-basket-item-count')
+//    var price = $(this).data('price')
+//    var sumPrice = $('#mini-basket-sum-price').html()
+//    var sumPriceLast = $('#mini-basket-sum-price')
 
-    $.ajax({
-        method: "POST",
-        url: "/basket/delete",
-        data: {
-            id: id
-        },
-        success: function (result) {
-            if (sum == 0) {
-                basketCountContainer.hide()
-            }
-            $(`.basket-products[id=${id}]`).remove();
-            basketCount.html("")
-            basketCount.append(sum)
-            sumPriceLast.html("")
-            sumPriceLast.append(sumPrice - price * quantity)
-            $(".notification-remove").fadeIn(1000);
-            setTimeout(() => {
-                $(".notification-remove").fadeOut(3000);
-            }, 2000);
-        }
-    })
-})
+//    $.ajax({
+//        method: "POST",
+//        url: "/basket/delete",
+//        data: {
+//            id: id
+//        },
+//        success: function (result) {
+//            if (sum == 0) {
+//                basketCountContainer.hide()
+//            }
+//            $(`.basket-products[id=${id}]`).remove();
+//            basketCount.html("")
+//            basketCount.append(sum)
+//            sumPriceLast.html("")
+//            sumPriceLast.append(sumPrice - price * quantity)
+//            $(".notification-remove").fadeIn(1000);
+//            setTimeout(() => {
+//                $(".notification-remove").fadeOut(3000);
+//            }, 2000);
+//        }
+//    })
+//})
 
 
 $(document).on("click", '.decrease', function () {
@@ -223,11 +247,9 @@ $(document).on("click", '.increase', function () {
 
 // Wish List  Start 
 
-$(document).on('click', '.product-heart', function () {
+$(document).on('click','.product-heart', function () {
     var id = $(this).data('id');
-    //$(this).removeClass("product-heart")
-
-
+    $(this).addClass("text-danger bg-dark")
     $.ajax({
         method: "POST",
         url: "https://localhost:44386/favourite/add",
@@ -235,7 +257,6 @@ $(document).on('click', '.product-heart', function () {
             id: id
         },
         success: function (result) {
-            $(this).addClass("active")
             $(".notification-success").fadeIn(1000);
             setTimeout(() => {
                 $(".notification-success").fadeOut(3000);
@@ -267,9 +288,17 @@ $(document).ready(function () {
                     $(".notification-remove").fadeOut(3000);
                 }, 2000);
             }
+            ,
+            error: function () {
+                $(".notification-error").fadeIn(1000);
+                setTimeout(() => {
+                    $(".notification-error").fadeOut(3000);
+                }, 2000);
+            }
         })
     })
 })
+
 
 
 // Wish List End //

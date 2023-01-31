@@ -13,13 +13,10 @@ namespace Web.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
-        private readonly AppDbContext _context;
 
-        public ProductController(IProductService productService,
-            AppDbContext context)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
-            _context = context;
         }
         public async Task<IActionResult> Index(ProductIndexVM model)
         {
@@ -27,10 +24,10 @@ namespace Web.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> FilterProducts(ProductIndexVM model)
+        public async Task<IActionResult> FilterProducts(ProductIndexVM models)
         {
-            model = await _productService.GetAllFilterAsync(model, model.Gender);
-            return PartialView("_ProductsPartial", model);
+            models = await _productService.GetAllFilterAsync(models, models.Gender);
+            return PartialView("_ProductsPartial", models);
         }
 
         [HttpGet]
@@ -52,7 +49,7 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> FilterByName(string? name)
         {
-            var model = await _productService.FilterByName(name);
+            var model = await _productService.FilterAllByName(name);
             return PartialView("_SearchProductPartial", model);
         }
 

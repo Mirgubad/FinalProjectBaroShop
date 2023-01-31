@@ -12,6 +12,7 @@ namespace Web.Services.Abstract
         Task<ProductDetailsVM> GetDetailsAsync(int id);
 
         Task<ProductLoadMoreVM> GetLoadMoreAsync(int skipRow);
+        Task<HeaderComponentVM> FilterAllByName(string? name);
         Task<IQueryable<Product>> FilterByName(string? name);
         Task<ProductIndexVM> FilterByGender(ProductIndexVM model, string? gender);
         Task<ProductIndexVM> FilterByModel(ProductIndexVM model, string? productmodel);

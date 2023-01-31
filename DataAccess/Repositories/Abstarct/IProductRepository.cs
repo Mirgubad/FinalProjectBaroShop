@@ -28,7 +28,6 @@ namespace DataAccess.Repositories.Abstarct
         Task<Product> GetUpdateModelAsync(int id);
 
         Task<List<Product>> ProductsLoadMoreAsync(int skipRow);
-
         Task<bool> CheckIsLastAsync(int skiprow);
 
         Task<IQueryable<Product>> FilterByPrice(IQueryable<Product> products, double? minPrice, double? maxPrice);

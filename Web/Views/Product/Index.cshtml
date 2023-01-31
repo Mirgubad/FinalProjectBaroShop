@@ -27,24 +27,27 @@
                     <div class="sub-categories" id="1">
                         <div class="inner-category">
                             @{
-                                <div>
-                                    <input value="" name="genderCheck" class="gender" id="allgender" type="radio" checked />
-                                    <label for="allgender"> All </label>
+                                <div class="filter-input">
+                                    <input value="" name="genderCheck" class="gender chkbx-toggle" id="allgender" type="radio" checked />
+                                    <label for="allgender"></label>
+                                    <span>All</span>
                                 </div>
                                 foreach (var productGender in Enum.GetValues(typeof(Gender)))
                                 {
                                     if (gender.ToString() == productGender.ToString())
                                     {
-                                        <div>
-                                            <input value="@productGender" name="genderCheck" class="gender" id="@productGender.ToString()" type="radio" checked />
-                                            <label for="@productGender.ToString()">@productGender.ToString().Normalize() </label>
+                                        <div class="filter-input">
+                                            <input value="@productGender" name="genderCheck" class="gender chkbx-toggle" id="@productGender-gender" type="radio" checked />
+                                            <label for="@productGender-gender"> </label>
+                                            <span>@productGender.ToString().Normalize()</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div>
-                                            <input value="@productGender" name="genderCheck" class="gender" id="@productGender.ToString()" type="radio" />
-                                            <label for="@productGender.ToString()">@productGender.ToString().Normalize() </label>
+                                        <div class="filter-input">
+                                            <input value="@productGender" name="genderCheck" class="gender chkbx-toggle" id="@productGender-gender" type="radio" />
+                                            <label for="@productGender-gender"></label>
+                                            <span>@productGender.ToString().Normalize()</span>
                                         </div>
                                     }
                                 }
@@ -61,24 +64,27 @@
                     <div class="sub-categories scroll" id="2">
                         <div class="inner-category">
                             @{
-                                <div>
-                                    <input value="" id="allBrand" name="brendCheck" type="radio" />
-                                    <label for="allBrand">All</label>
+                                <div class="filter-input">
+                                    <input value="0" id="allBrand" name="brendCheck" class="chkbx-toggle" type="radio" checked>
+                                    <label for="allBrand"></label>
+                                    <span>All</span>
                                 </div>
                                 foreach (var brand in Model.Brands)
                                 {
                                     if (brand.Id.ToString() == brendCheck.ToString())
                                     {
-                                        <div>
-                                            <input value="@brand.Id" id="@brand.Id" name="brendCheck" type="radio" checked />
-                                            <label for="@brand.Id">@brand.Title</label>
+                                        <div class="filter-input">
+                                            <input class="chkbx-toggle" value="@brand.Id" id="@brand.Id-brand" name="brendCheck" type="radio" checked />
+                                            <label for="@brand.Id-brand"></label>
+                                            <span>@brand.Title</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div>
-                                            <input value="@brand.Id" id="@brand.Id" name="brendCheck" type="radio" />
-                                            <label for="@brand.Id">@brand.Title</label>
+                                        <div class="filter-input">
+                                            <input class="chkbx-toggle" value="@brand.Id" id="@brand.Id-brand" name="brendCheck" type="radio" />
+                                            <label for="@brand.Id-brand"></label>
+                                            <span>@brand.Title</span>
                                         </div>
                                     }
                                 }
@@ -100,15 +106,15 @@
                                     if (color.Id.ToString() == checkColor.ToString())
                                     {
                                         <div>
-                                            <input checked name="checkColor" type="radio" class="btn-check color" id="@color.Id-color" value="@color.Id"   />
-                                            <label class="btn bg-@color.Title.ToLower() product-color" for="@color.Id-color">  </label>
+                                            <input checked name="checkColor" type="radio" class="btn-check color" id="@color.Id-color" value="@color.Id" />
+                                            <label title="@color.Title" class="btn bg-@color.Title.ToLower() product-color" for="@color.Id-color">  </label>
                                         </div>
                                     }
                                     else
                                     {
                                         <div>
-                                            <input name="checkColor" type="radio" value="@color.Id" class="btn-check color" id="@color.Id-color"  />
-                                            <label class="btn bg-@color.Title.ToLower() product-color" for="@color.Id-color"> </label>
+                                            <input name="checkColor" type="radio" value="@color.Id" class="btn-check color" id="@color.Id-color" />
+                                            <label title="@color.Title" class="btn bg-@color.Title.ToLower() product-color" for="@color.Id-color"> </label>
                                         </div>
                                     }
                                 }
@@ -125,24 +131,27 @@
                     <div class="sub-categories" id="4">
                         <div class="inner-category">
                             @{
-                                <div>
-                                    <input value="" name="modelCheck" id="allmodel" type="radio" checked />
-                                    <label for="allmodel">All</label>
+                                <div class="filter-input">
+                                    <input value="" name="modelCheck" id="allmodel" class="chkbx-toggle" type="radio" checked />
+                                    <label for="allmodel"></label>
+                                    <span>All</span>
                                 </div>
                                 foreach (var productModel in Enum.GetValues(typeof(Model)))
                                 {
                                     if (productModel.ToString() == modelcheck.ToString())
                                     {
-                                        <div>
-                                            <input value="@productModel" name="modelCheck" id="@productModel.ToString().ToLower()" type="radio" checked />
-                                            <label for="@productModel.ToString().ToLower()">@productModel.ToString().Normalize()</label>
+                                        <div class="filter-input">
+                                            <input value="@productModel" name="modelCheck" id="@productModel-model" class="chkbx-toggle" type="radio" checked />
+                                            <label for="@productModel-model"></label>
+                                            <span>@productModel.ToString().Normalize()</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div>
-                                            <input value="@productModel" name="modelCheck" id="@productModel.ToString().ToLower()" type="radio" />
-                                            <label for="@productModel.ToString().ToLower()">@productModel.ToString().Normalize()</label>
+                                        <div class="filter-input">
+                                            <input value="@productModel" name="modelCheck" id="@productModel-model" class="chkbx-toggle" type="radio" />
+                                            <label for="@productModel-model"></label>
+                                            <span>@productModel.ToString().Normalize()</span>
                                         </div>
                                     }
                                 }
@@ -159,25 +168,28 @@
                     <div class="sub-categories" id="6">
                         <div class="inner-category">
                             @{
-                                <div>
-                                    <input value="" name="materialCheck" id="allmaterial" type="radio" checked />
-                                    <label for="allmaterial">All</label>
+                                <div class="filter-input">
+                                    <input value="" name="materialCheck" class="chkbx-toggle" id="allmaterial" type="radio" checked />
+                                    <label for="allmaterial"></label>
+                                    <span>All</span>
                                 </div>
                                 foreach (var productMaterial in Enum.GetValues(typeof(Material)))
                                 {
 
                                     if (productMaterial.ToString() == materialCheck.ToString())
                                     {
-                                        <div>
-                                            <input value="@productMaterial" name="materialCheck" id="@productMaterial.ToString().ToLower()" type="radio" checked />
-                                            <label for="@productMaterial.ToString().ToLower()">@productMaterial.ToString().Normalize()</label>
+                                        <div class="filter-input">
+                                            <input value="@productMaterial" class="chkbx-toggle" name="materialCheck" id="@productMaterial-material" type="radio" checked />
+                                            <label for="@productMaterial-material"></label>
+                                            <span>@productMaterial.ToString().Normalize()</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div>
-                                            <input value="@productMaterial" name="materialCheck" id="@productMaterial.ToString().ToLower()" type="radio" />
-                                            <label for="@productMaterial.ToString().ToLower()">@productMaterial.ToString().Normalize()</label>
+                                        <div class="filter-input">
+                                            <input value="@productMaterial" class="chkbx-toggle" name="materialCheck" id="@productMaterial-material" type="radio" />
+                                            <label for="@productMaterial-material"></label>
+                                            <span>@productMaterial.ToString().Normalize()</span>
                                         </div>
                                     }
                                 }

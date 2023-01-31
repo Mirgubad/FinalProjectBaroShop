@@ -17,7 +17,7 @@ namespace Web.Controllers
         {
             var model = await _favouriteService.GetAllAsync();
             return View(model);
-
+           
         }
 
 

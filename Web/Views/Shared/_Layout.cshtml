@@ -23,11 +23,11 @@
     <link rel="stylesheet"
           href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 
-
     <title>@ViewBag.Title</title>
 </head>
 
 <body>
+    <div class="wrapper">
     <div class="loader-main">
         <div class="loader-container">
             <div class="Loader" data-text="Loading">
@@ -85,12 +85,19 @@
 
 
     @await Component.InvokeAsync("Footer")
+    </div>
 
+    <!-- Mini Basket START-->
+    <div class="mini-cart menu-open align-items-stretch align-content-stretch"
+         id="CartDrawer">
+        <div id="close-basket-btn">
+            <i class="fa fa-close" aria-hidden="true"></i>
+        </div>
+        <div class="cart-items" id="cartItemList"></div>
+
+    </div>
     <!-- Mini Basket END-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"
-            integrity="sha512-nO7wgHUoWPYGCNriyGzcFwPSF+bPDOR+NvtOYy2wMcWkrnCNPKBcFEkU80XIN14UVja0Gdnff9EmydyLlOL7mQ=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer"></script>
+    <script src="~/assets/Scripts/jquery/dist/jquery.js"></script>
     <script src="~/assets/Scripts/basket.js"></script>
     <script src="~/assets/Scripts/navbar.js"></script>
 

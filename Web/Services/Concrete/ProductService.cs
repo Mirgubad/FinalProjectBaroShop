@@ -77,7 +77,17 @@ namespace Web.Services.Concrete
             return model;
         }
 
+      
 
+        public async Task<HeaderComponentVM> FilterAllByName(string? name)
+        {
+            var products = await _productRepository.FilterByName(name);
+            var model = new HeaderComponentVM
+            {
+                Products = products.ToList()
+            };
+            return model;
+        }
 
         public async Task<ProductDetailsVM> GetDetailsAsync(int id)
         {
