@@ -24,19 +24,11 @@ namespace Web.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> FilterProducts(ProductIndexVM models)
-        {
-            models = await _productService.GetAllFilterAsync(models, models.Gender);
-            return PartialView("_ProductsPartial", models);
-        }
-
-        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var model = await _productService.GetDetailsAsync(id);
             return View(model);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> LoadMore(int skipRow)
@@ -51,29 +43,6 @@ namespace Web.Controllers
         {
             var model = await _productService.FilterAllByName(name);
             return PartialView("_SearchProductPartial", model);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetProductsPaginate(int pageNumber)
-        {
-            var data = await _productService.GetProductsWithPaginate(pageNumber);
-            return PartialView("_ProductsPartial", data);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> FilterByGender(string? genders)
-        {
-            var model = new ProductIndexVM();
-            model = await _productService.FilterByGender(model, genders);
-            return PartialView("_ProductsPartial", model);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> FilterByModel(string? models)
-        {
-            var model = new ProductIndexVM();
-            model = await _productService.FilterByModel(model, models);
-            return PartialView("_ProductsPartial", model);
         }
     }
 }

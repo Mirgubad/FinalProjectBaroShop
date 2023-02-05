@@ -72,20 +72,6 @@ namespace Web.Areas.Admin.Services.Concrete
             return true;
         }
 
-        public async Task<bool> ConfirmAdminAccountAsync(string token)
-        {
-            var adminUser = await _userManager.FindByEmailAsync("mirgubad@gmail.com");
-            if (adminUser.SecurityStamp != token)
-            {
-                return false;
-            }
-            // logic to verify user, for example
-            adminUser.EmailConfirmed = true;
-            await _userManager.UpdateAsync(adminUser);
-            return true;
-        }
-
-
         public async Task<bool> ResetPasswordTokenAsync(string link, ForgotPasswordVM model)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
@@ -107,7 +93,7 @@ namespace Web.Areas.Admin.Services.Concrete
         {
             if (!_modelState.IsValid)
             {
-                _modelState.AddModelError("Password", "Password is Required");
+                _modelState.AddModelError(string.Empty, "Password is Required");
                 return false;
             }
 
@@ -115,13 +101,13 @@ namespace Web.Areas.Admin.Services.Concrete
             var existUser = await _userManager.FindByIdAsync(resetPasswordVM.Id);
             if (existUser == null)
             {
-                _modelState.AddModelError("Password", "User cannot found");
+                _modelState.AddModelError(string.Empty, "User cannot found");
                 return false;
             }
 
             if (await _userManager.CheckPasswordAsync(existUser, resetPasswordVM.Password))
             {
-                _modelState.AddModelError("Password", "New password cant be same with old password");
+                _modelState.AddModelError(string.Empty, "New password cant be same with old password");
                 return false;
             }
             await _userManager.ResetPasswordAsync(existUser, resetPasswordVM.Token, resetPasswordVM.Password);

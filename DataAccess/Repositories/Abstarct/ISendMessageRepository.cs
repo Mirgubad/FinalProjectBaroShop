@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories.Abstarct
 {
-    public interface ISendMessageRepository:IRepository<SendMessage>
+    public interface ISendMessageRepository : IRepository<SendMessage>
     {
+        Task<int> GetMessageCountAsync();
     }
 }

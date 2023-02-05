@@ -12,5 +12,7 @@ namespace Web.ViewModels.About
         public SendMessage Message { get; set; }
         public Contact ContactInfo { get; set; }
         public Location Map { get; set; }
+        public bool IsSent { get; set; }
+
     }
 }

@@ -24,12 +24,9 @@ namespace DataAccess.Repositories.Abstarct
         Task<IQueryable<Product>> FilterByColor(IQueryable<Product> products, int colorId);
         Task<IQueryable<Product>> FilterByBrand(IQueryable<Product> products, int brandId);
         Task<List<Product>> GetRelatedProductsAsync(int productId, int model, int gender);
-
         Task<Product> GetUpdateModelAsync(int id);
-
         Task<List<Product>> ProductsLoadMoreAsync(int skipRow);
         Task<bool> CheckIsLastAsync(int skiprow);
-
         Task<IQueryable<Product>> FilterByPrice(IQueryable<Product> products, double? minPrice, double? maxPrice);
 
 

@@ -76,32 +76,32 @@
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.Username"></label>
                                     <input asp-for="@Model.Username">
-                                    <span asp-validation-for="@Model.Username"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.Username"></span>
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.Fullname"></label>
                                     <input asp-for="@Model.Fullname">
-                                    <span asp-validation-for="@Model.Fullname"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.Fullname"></span>
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.Email"></label>
                                     <input asp-for="@Model.Email">
-                                    <span asp-validation-for="@Model.Email"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.Email"></span>
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.Mobile"></label>
                                     <input asp-for="@Model.Mobile">
-                                    <span asp-validation-for="@Model.Mobile"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.Mobile"></span>
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.Password"></label>
                                     <input asp-for="@Model.Password">
-                                    <span asp-validation-for="@Model.Password"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.Password"></span>
                                 </div>
                                 <div class="field padding-bottom--24">
                                     <label asp-for="@Model.ConfirmPassword"></label>
                                     <input asp-for="@Model.ConfirmPassword">
-                                    <span asp-validation-for="@Model.ConfirmPassword"></span>
+                                    <span style="font-size:14px !important;color:red !important" asp-validation-for="@Model.ConfirmPassword"></span>
                                 </div>
                                 <div style="font-size:14px !important;color:red !important" asp-validation-summary="ModelOnly">
                                 </div>
@@ -116,8 +116,7 @@
                         <span>Do you have an account? <a asp-action="login" asp-controller="account">Sign in</a></span>
                         <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
                             <span><a href="#">© Baro Shop</a></span>
-                            <span><a href="#">Contact</a></span>
-                            <span><a href="#">Privacy & terms</a></span>
+                            <span><a asp-action="index" asp-controller="about" asp-fragment="contact-info">Contact</a></span>
                         </div>
                     </div>
                 </div>

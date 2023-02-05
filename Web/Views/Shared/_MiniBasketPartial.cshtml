@@ -50,27 +50,28 @@
                 </div>
             </div>
         }
+        <div class="mt-4 mini-basket-bottom">
+            Total Price:<span style="font-size:16px" id="sum-price">@sum</span>$
 
-        <div class="mt-4 mini-basket-bottom">Total Price:<span style="font-size:16px" id="sum-price">@sum</span>$
-        
-          <div class="cart-info">
-            <div class="cart-buttons d-flex justify-content-between align-items-center pt-1">
-                <a asp-action="index" asp-controller="basket"
-           class="btn btn-sm btn-light sans fs-14">View bag</a>
-                <a class="text-uppercase fs-12 tk-brandon-grotesque btn btn-sm btn-primary btn-xs-block"
-               id="drawerCheckoutButton">Checkout</a>
+            <div class="cart-info">
+                <div class="cart-buttons d-flex justify-content-between align-items-center pt-1">
+                    <a asp-action="index" asp-controller="basket"
+               class="btn btn-sm btn-light sans fs-14">View bag</a>
+                    <a class="text-uppercase fs-12 tk-brandon-grotesque btn btn-sm btn-primary btn-xs-block"
+                   id="drawerCheckoutButton">Checkout</a>
+                </div>
             </div>
         </div>
-        
-        
-        
-        </div>
-
-      
     }
     else
     {
         <div class="text-center mb-5 "><p>Shopping card is Empty...</p></div>
+        <a class="text-center ml-5 text-dark" asp-action="index" asp-controller="product">Go To Shopping  <i class="fa fa-long-arrow-right" aria-hidden="true"></i> </a>
+        <style>
+            .mini-cart {
+                height: 150px;
+            }
+        </style>
     }
 
 }

@@ -59,27 +59,30 @@ $(document).on("mouseleave", ".product-item", function () {
 //}
 
 
-//$("input[name='genderCheck']").change(function () {
-//    // Get the current state of the checkboxes
-//    var filter = $("input[name='genderCheck']:checked").map(function () {
-//        return this.value;
-//    }).get();
-//    var genders = 0
-//    var filtered = filter.map(function (gender) {
-//        genders = gender
-//    })
-//    $.ajax({
-//        url: "/product/filterproducts",
-//        data: { genders: genders },
-//        success: function (result) {
-//            $("#products").html(result);
-//            $("#MinPrice").val('');
-//            $("#MaxPrice").val('');
+$("input[name='genderCheck']").change(function () {
+    // Get the current state of the checkboxes
+    var filter = $("input[name='genderCheck']:checked").map(function () {
+        return this.value;
+    }).get();
+    var Gender = 0
+    var filtered = filter.map(function (Genders) {
+        Gender = Genders
+    })
+    var models = {
+        Gender:Gender
+        }
+    $.ajax({
+        url: "/product/filterproducts",
+        data: JSON.stringify(models),
+        success: function (result) {
+            $("#products").html(result);
+            $("#MinPrice").val('');
+            $("#MaxPrice").val('');
 
-//        }
-//    });
+        }
+    });
 
-//});
+});
 
 //$("input[name='modelCheck']").change(function () {
 //    // Get the current state of the checkboxes
@@ -133,3 +136,5 @@ setTimeout(() => {
 //$("#filterResetbtn").click(function () {
 //    document.getElementById("filter").reset();
 //})
+
+ 

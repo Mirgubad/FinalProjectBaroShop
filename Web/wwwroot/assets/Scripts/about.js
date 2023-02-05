@@ -10,10 +10,10 @@ $(document).ready(function () {
 
 
 
-$(".menu-item").click(function(){
-    $(".menu-item").removeClass("choosen")
-    $(this).addClass("choosen")
-})
+    $(".menu-item").click(function () {
+        $(".menu-item").removeClass("choosen")
+        $(this).addClass("choosen")
+    })
 
 
 
@@ -21,6 +21,7 @@ $(".menu-item").click(function(){
 
 
 
+   
 
 
 

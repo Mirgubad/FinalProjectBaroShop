@@ -23,7 +23,7 @@
                 </div>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <div class="add-basket-btn" data-id="@product.Id">
+                    <div class="add-basket-btn" onclick="AddToBasket(@product.Id)" data-id="@product.Id">
                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
                     </div>
                 }

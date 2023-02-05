@@ -34,22 +34,8 @@ namespace Web.Areas.Admin.Controllers
         public async Task<IActionResult> Login(AccountLoginVM model)
         {
             var isSucceded = await _accountService.LoginAsync(model);
-            if (isSucceded) return RedirectToAction("index", "dashboard");
+            if (isSucceded) return RedirectToAction("index", "homemainslider");
             return View(model);
-        }
-
-
-        [HttpGet("verify-admin")]
-        public async Task<IActionResult> VerifyAdmin(string token)
-        {
-            var isConfirmed = await _accountService.ConfirmAdminAccountAsync(token);
-            if (isConfirmed) return RedirectToRoute(new
-            {
-                controller = "account",
-                action = "login",
-                area = "admin"
-            });
-            return BadRequest();
         }
 
         #endregion

@@ -11,7 +11,16 @@ namespace DataAccess.Repositories.Concrete
 {
     public class SendMessageRepository : Repository<SendMessage>, ISendMessageRepository
     {
-        public SendMessageRepository(AppDbContext context) : base(context) { }
+        private readonly AppDbContext _context;
 
+        public SendMessageRepository(AppDbContext context) : base(context)
+        {
+            _context = context;
+        }
+
+        public async Task<int> GetMessageCountAsync()
+        {
+            return _context.SendMessages.Count();
+        }
     }
 }

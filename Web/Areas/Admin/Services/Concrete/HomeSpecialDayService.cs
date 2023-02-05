@@ -97,6 +97,13 @@ namespace Web.Areas.Admin.Services.Concrete
             return model;
         }
 
+        public async Task<bool> IsExistAsync()
+        {
+            var isExist = await _homeSpecialDayRepository.GetAsync();
+            if (isExist != null) return true;
+            return false;
+        }
+
         public async Task<bool> UpdateAsync(HomeSpecialDayUpdateVM model)
         {
             if (!_modelState.IsValid) return false;

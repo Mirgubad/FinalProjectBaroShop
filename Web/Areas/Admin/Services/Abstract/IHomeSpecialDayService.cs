@@ -9,5 +9,6 @@ namespace Web.Areas.Admin.Services.Abstract
         Task<HomeSpecialDayUpdateVM> GetUpdataModelAsync(int id);
         Task<bool> UpdateAsync(HomeSpecialDayUpdateVM model);
         Task DeleteAsync(int id);
+        Task<bool> IsExistAsync();
     }
 }

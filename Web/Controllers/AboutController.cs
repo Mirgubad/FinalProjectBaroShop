@@ -22,9 +22,10 @@ namespace Web.Controllers
         [HttpPost]
         public async Task<IActionResult> SendMessage(SendMessage message)
         {
+            //=> RedirectToAction(actionName, controllerName, routeValues, fragment: null);
             var isSucceded = await _aboutService.SendMessageAsync(message);
-            if (isSucceded) return RedirectToAction(nameof(Index));
-            return View(message);
+            if (isSucceded) return RedirectToAction(nameof(Index), "about", null, "contact-info");
+            return RedirectToAction(nameof(Index), "about");
         }
         #endregion
     }

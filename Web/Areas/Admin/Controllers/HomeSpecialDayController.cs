@@ -25,6 +25,8 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var isExist=await  _homeSpecialDayService.IsExistAsync();
+            if (isExist) return NotFound();
             return View();
         }
 

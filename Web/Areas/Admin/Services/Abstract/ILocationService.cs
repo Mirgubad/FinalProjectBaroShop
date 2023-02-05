@@ -9,5 +9,6 @@ namespace Web.Areas.Admin.Services.Abstract
         Task<LocationUpdateVM> GetUpdateModelAsync();
         Task<bool> UpdateAsync(LocationUpdateVM model);
         Task DeleteAsync();
+        Task<bool> IsExistAsync();
     }
 }

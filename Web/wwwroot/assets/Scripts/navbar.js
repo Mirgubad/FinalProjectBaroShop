@@ -41,6 +41,7 @@ $(window).scroll(function () {
     } else {
         $scrollingDiv.css("position", "fixed").css("z-index", "-1");
         header.removeClass("scrolled")
+        header.css("box-shadow", "0px 0px 4px 0px")
     }
 });
 
@@ -50,10 +51,6 @@ $(window).scroll(function () {
 
 
 $(".loader-main").hide();
-
-
-
-
 
 
 $(document).ready(function () {

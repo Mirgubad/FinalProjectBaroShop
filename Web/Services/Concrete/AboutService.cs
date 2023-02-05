@@ -72,9 +72,10 @@ namespace Web.Services.Concrete
                 FullName = message.FullName,
                 Message = message.Message,
                 Subject = message.Subject,
-
+                IsSend = true
             };
 
+            var model = new AboutIndexVM { IsSent = true };
             await _sendMessageRepository.CreateAsync(newMessage);
             return true;
         }

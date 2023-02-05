@@ -25,6 +25,8 @@ namespace Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var isExist = await _locationService.IsExistAsync();
+            if (isExist) return NotFound();
             return View();
         }
 
